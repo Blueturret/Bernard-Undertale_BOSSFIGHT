@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class CharacterControls : MonoBehaviour
 {
     Rigidbody2D rb;
-    PlayerInput playerInput;
 
     float horizontalInput, verticalInput;
     [SerializeField] float speed; 
@@ -15,7 +14,7 @@ public class CharacterControls : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.linearVelocity = new Vector2 (horizontalInput, verticalInput).normalized * speed * Time.deltaTime;
     }
