@@ -62,6 +62,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""c21c13aa-1fd2-4631-b8a1-9347575a23ad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""7483f226-b551-4f26-99f5-0e8d5508668a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +258,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""TurnBlue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f71561b5-f23c-43e9-9be0-4d4012391266"",
+                    ""path"": ""<Keyboard>/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bcd062f-85be-4f9f-bf56-36334eaa6d44"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeToGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -260,7 +300,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""7607c7b6-cd76-4816-beef-bd0341cfe950"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -269,7 +309,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""15cef263-9014-4fd5-94d9-4e4a6234a6ef"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -606,7 +646,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc"",
-                    ""path"": ""*/{Submit}"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad;Touch;Joystick;XR"",
@@ -829,6 +869,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_TurnRed = m_Player.FindAction("TurnRed", throwIfNotFound: true);
         m_Player_TurnBlue = m_Player.FindAction("TurnBlue", throwIfNotFound: true);
+        m_Player_ChangeToMenu = m_Player.FindAction("ChangeToMenu", throwIfNotFound: true);
+        m_Player_ChangeToGame = m_Player.FindAction("ChangeToGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -912,6 +954,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_TurnRed;
     private readonly InputAction m_Player_TurnBlue;
+    private readonly InputAction m_Player_ChangeToMenu;
+    private readonly InputAction m_Player_ChangeToGame;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -920,6 +964,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @TurnRed => m_Wrapper.m_Player_TurnRed;
         public InputAction @TurnBlue => m_Wrapper.m_Player_TurnBlue;
+        public InputAction @ChangeToMenu => m_Wrapper.m_Player_ChangeToMenu;
+        public InputAction @ChangeToGame => m_Wrapper.m_Player_ChangeToGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -941,6 +987,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TurnBlue.started += instance.OnTurnBlue;
             @TurnBlue.performed += instance.OnTurnBlue;
             @TurnBlue.canceled += instance.OnTurnBlue;
+            @ChangeToMenu.started += instance.OnChangeToMenu;
+            @ChangeToMenu.performed += instance.OnChangeToMenu;
+            @ChangeToMenu.canceled += instance.OnChangeToMenu;
+            @ChangeToGame.started += instance.OnChangeToGame;
+            @ChangeToGame.performed += instance.OnChangeToGame;
+            @ChangeToGame.canceled += instance.OnChangeToGame;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -957,6 +1009,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TurnBlue.started -= instance.OnTurnBlue;
             @TurnBlue.performed -= instance.OnTurnBlue;
             @TurnBlue.canceled -= instance.OnTurnBlue;
+            @ChangeToMenu.started -= instance.OnChangeToMenu;
+            @ChangeToMenu.performed -= instance.OnChangeToMenu;
+            @ChangeToMenu.canceled -= instance.OnChangeToMenu;
+            @ChangeToGame.started -= instance.OnChangeToGame;
+            @ChangeToGame.performed -= instance.OnChangeToGame;
+            @ChangeToGame.canceled -= instance.OnChangeToGame;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1143,6 +1201,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnTurnRed(InputAction.CallbackContext context);
         void OnTurnBlue(InputAction.CallbackContext context);
+        void OnChangeToMenu(InputAction.CallbackContext context);
+        void OnChangeToGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

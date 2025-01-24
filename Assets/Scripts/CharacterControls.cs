@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
@@ -8,23 +9,25 @@ public class CharacterControls : MonoBehaviour
     
     float horizontalInput, verticalInput;
 
-    [Header("Movement")]
+        [Header("Movement")]
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
-    bool wantsToJump = false;
-    [SerializeField] bool isBlue = false;
     [SerializeField] float gravityScale = 6;
+    [SerializeField] float jumpCooldown = 0.5f;
+    bool wantsToJump = false;
+    bool canJump = true;
+    bool isBlue = false;
 
 
-    [Header("GroundCheck")]
-    Transform groundCheck;
+        [Header("GroundCheck")]
+    Transform groundCheck;  
     [SerializeField] LayerMask groundMask;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        groundCheck = transform.GetChild(0).transform;
+        groundCheck = transform.GetChild(1).transform;
     }
 
     // Update is called once per frame
@@ -42,9 +45,11 @@ public class CharacterControls : MonoBehaviour
 
     private void Update()
     {
-        if(wantsToJump && isGrounded())
+        if(wantsToJump && isGrounded() && canJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            StartCoroutine(JumpCooldown());
         }
     }
 
@@ -81,6 +86,15 @@ public class CharacterControls : MonoBehaviour
         }
     }
 
+    IEnumerator JumpCooldown()
+    {
+        canJump = false;
+
+        yield return new WaitForSeconds(jumpCooldown);
+
+        canJump = true;
+    }
+
     public void ChangeState(int stateIndex)
     {
         switch (stateIndex)
@@ -98,16 +112,17 @@ public class CharacterControls : MonoBehaviour
         rb.gravityScale = gravityScale;
         isBlue = true;
 
-        SpriteRenderer sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        SpriteRenderer sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         sprite.color = new Color(0, 0, 255);
     }
-
     void TurnRed()
     {
         rb.gravityScale = 0f;
         isBlue = false;
 
-        SpriteRenderer sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        SpriteRenderer sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         sprite.color = new Color(255, 0, 0);
     }
+
+    
 }
