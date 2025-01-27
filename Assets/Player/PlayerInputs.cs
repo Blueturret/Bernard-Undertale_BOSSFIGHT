@@ -80,6 +80,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Damage"",
+                    ""type"": ""Button"",
+                    ""id"": ""d782d99f-ddeb-4ac2-9796-7fc58b94e732"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd56e7b8-02c3-43c8-8b30-1ab4c91b5b37"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -234,6 +252,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeToGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc1fa42a-5e31-4a9c-977b-195d68563cb9"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf29473b-ac6d-4b61-9d54-dc43f63f002e"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -827,6 +867,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_TurnBlue = m_Player.FindAction("TurnBlue", throwIfNotFound: true);
         m_Player_ChangeToMenu = m_Player.FindAction("ChangeToMenu", throwIfNotFound: true);
         m_Player_ChangeToGame = m_Player.FindAction("ChangeToGame", throwIfNotFound: true);
+        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
+        m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -912,6 +954,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TurnBlue;
     private readonly InputAction m_Player_ChangeToMenu;
     private readonly InputAction m_Player_ChangeToGame;
+    private readonly InputAction m_Player_Damage;
+    private readonly InputAction m_Player_Heal;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -922,6 +966,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @TurnBlue => m_Wrapper.m_Player_TurnBlue;
         public InputAction @ChangeToMenu => m_Wrapper.m_Player_ChangeToMenu;
         public InputAction @ChangeToGame => m_Wrapper.m_Player_ChangeToGame;
+        public InputAction @Damage => m_Wrapper.m_Player_Damage;
+        public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -949,6 +995,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ChangeToGame.started += instance.OnChangeToGame;
             @ChangeToGame.performed += instance.OnChangeToGame;
             @ChangeToGame.canceled += instance.OnChangeToGame;
+            @Damage.started += instance.OnDamage;
+            @Damage.performed += instance.OnDamage;
+            @Damage.canceled += instance.OnDamage;
+            @Heal.started += instance.OnHeal;
+            @Heal.performed += instance.OnHeal;
+            @Heal.canceled += instance.OnHeal;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -971,6 +1023,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ChangeToGame.started -= instance.OnChangeToGame;
             @ChangeToGame.performed -= instance.OnChangeToGame;
             @ChangeToGame.canceled -= instance.OnChangeToGame;
+            @Damage.started -= instance.OnDamage;
+            @Damage.performed -= instance.OnDamage;
+            @Damage.canceled -= instance.OnDamage;
+            @Heal.started -= instance.OnHeal;
+            @Heal.performed -= instance.OnHeal;
+            @Heal.canceled -= instance.OnHeal;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1159,6 +1217,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnTurnBlue(InputAction.CallbackContext context);
         void OnChangeToMenu(InputAction.CallbackContext context);
         void OnChangeToGame(InputAction.CallbackContext context);
+        void OnDamage(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
