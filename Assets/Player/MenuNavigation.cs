@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,11 +11,16 @@ public class MenuNavigation : MonoBehaviour
     HUD hud;
     
     GameObject playerSprite;
+    Collider2D playerCollision;
     Transform defaultPlayerPosition;
     bool isInGame = true;
 
         [Header("Menu Navigation")]
     [SerializeField] Button fightButton;
+
+    // Attack Manager
+    AttackManager attackManager;
+    public event Action OnChangeToGame;
 
     private void Awake()
     {
@@ -23,12 +29,17 @@ public class MenuNavigation : MonoBehaviour
         hud = GameObject.Find("HUD").GetComponent<HUD>();
 
         playerSprite = this.transform.GetChild(0).gameObject;
+        playerCollision = this.GetComponent<BoxCollider2D>();
         defaultPlayerPosition = GameObject.Find("Player Default Position").transform;
+
+        attackManager = GameObject.Find("BOSS").GetComponent<AttackManager>();
     }
 
     private void Start()
     {
         ChangeToMenu();
+
+        OnChangeToGame += attackManager.LaunchNextAttack;
     }
 
     public void ChangeToMenu()
@@ -38,6 +49,7 @@ public class MenuNavigation : MonoBehaviour
             playerInput.FindActionMap("UI").Enable();
 
             playerSprite.SetActive(false);
+            playerCollision.enabled = false;
 
             fightButton.Select();
 
@@ -52,6 +64,7 @@ public class MenuNavigation : MonoBehaviour
             hud.Backwards();
             
             playerInput.FindActionMap("UI").Disable();
+            playerCollision.enabled = true;
 
             playerSprite.SetActive(true);
             transform.position = defaultPlayerPosition.position;
@@ -59,6 +72,8 @@ public class MenuNavigation : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
 
             isInGame = true;
+
+            OnChangeToGame.Invoke();
         }
     }
 }

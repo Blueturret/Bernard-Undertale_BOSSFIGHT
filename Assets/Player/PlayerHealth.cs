@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
-    
+
     [SerializeField] float health;
     float maxHealth = 92;
 
@@ -16,33 +16,27 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void TakeDamage(InputAction.CallbackContext context)
+    public void TakeDamage(float damage)
     {
-        if (context.performed)
+        health -= damage;
+        if (health <= 0)
         {
-            health -= 5;
-            if (health <= 0)
-            {
-                Debug.Log("You ded");
-                health = maxHealth;
-            }
-
-            // Change UI
-            healthBar.fillAmount = health / maxHealth;
-            healthText.text = health.ToString() + " / " + maxHealth.ToString();
+            Debug.Log("You ded");
+            health = maxHealth;
         }
+
+        // Change UI
+        healthBar.fillAmount = health / maxHealth;
+        healthText.text = health.ToString() + " / " + maxHealth.ToString();
     }
 
-    public void Heal(InputAction.CallbackContext context)
+    public void Heal(float amount)
     {
-        if (context.performed) 
-        {
-            health += 5;
-            health = Mathf.Clamp(health, 1, maxHealth);
+        health += amount;
+        health = Mathf.Clamp(health, 1, maxHealth);
 
-            // Change UI
-            healthBar.fillAmount = health / maxHealth;
-            healthText.text = health.ToString() + " / " + maxHealth.ToString();
-        }
+        // Change UI
+        healthBar.fillAmount = health / maxHealth;
+        healthText.text = health.ToString() + " / " + maxHealth.ToString();
     }
 }
