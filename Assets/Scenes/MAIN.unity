@@ -4718,6 +4718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860552529}
   - component: {fileID: 1860552528}
+  - component: {fileID: 1860552530}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -4752,6 +4753,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1860552530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860552527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49f711f6e99aba4faf5e8da7873a8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Obstacle
+    prefab: {fileID: 733459020448650495, guid: dfb3977b265a7ad4eaa92ab63b8c4070, type: 3}
+    size: 100
 --- !u!1 &1861922076
 GameObject:
   m_ObjectHideFlags: 0

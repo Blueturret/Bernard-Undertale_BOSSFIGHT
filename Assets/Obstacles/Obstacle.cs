@@ -1,15 +1,19 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour, IPooledObject
 {
     [SerializeField] float damage;
+    Rigidbody2D rb;
 
-    private void Start()
+    private void Awake()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        
-        rb.linearVelocity = new Vector2 (-3, 0);
+        rb = GetComponent<Rigidbody2D>();   
+    }
+
+    public void OnObjectSpawned()
+    {
+        rb.linearVelocity = new Vector2 (-3, Random.Range(-1, 1));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
