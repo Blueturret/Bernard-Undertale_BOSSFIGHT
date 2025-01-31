@@ -98,6 +98,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Wide"",
+                    ""type"": ""Button"",
+                    ""id"": ""95b61540-caef-4891-9cad-7b9bad93076c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shrink"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ddfa369-fe40-476b-8987-8f9259844247"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +292,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""438407a5-46ef-47c3-87d2-925e409bd4de"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Wide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""309906ff-587e-4d39-942f-13f36835cc8a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shrink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -869,6 +909,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_ChangeToGame = m_Player.FindAction("ChangeToGame", throwIfNotFound: true);
         m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_Wide = m_Player.FindAction("Wide", throwIfNotFound: true);
+        m_Player_Shrink = m_Player.FindAction("Shrink", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -956,6 +998,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeToGame;
     private readonly InputAction m_Player_Damage;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_Wide;
+    private readonly InputAction m_Player_Shrink;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -968,6 +1012,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @ChangeToGame => m_Wrapper.m_Player_ChangeToGame;
         public InputAction @Damage => m_Wrapper.m_Player_Damage;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @Wide => m_Wrapper.m_Player_Wide;
+        public InputAction @Shrink => m_Wrapper.m_Player_Shrink;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1001,6 +1047,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Heal.started += instance.OnHeal;
             @Heal.performed += instance.OnHeal;
             @Heal.canceled += instance.OnHeal;
+            @Wide.started += instance.OnWide;
+            @Wide.performed += instance.OnWide;
+            @Wide.canceled += instance.OnWide;
+            @Shrink.started += instance.OnShrink;
+            @Shrink.performed += instance.OnShrink;
+            @Shrink.canceled += instance.OnShrink;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1029,6 +1081,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Heal.started -= instance.OnHeal;
             @Heal.performed -= instance.OnHeal;
             @Heal.canceled -= instance.OnHeal;
+            @Wide.started -= instance.OnWide;
+            @Wide.performed -= instance.OnWide;
+            @Wide.canceled -= instance.OnWide;
+            @Shrink.started -= instance.OnShrink;
+            @Shrink.performed -= instance.OnShrink;
+            @Shrink.canceled -= instance.OnShrink;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1219,6 +1277,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnChangeToGame(InputAction.CallbackContext context);
         void OnDamage(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnWide(InputAction.CallbackContext context);
+        void OnShrink(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

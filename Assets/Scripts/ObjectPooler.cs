@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
+// Pour etre honnete, j'ai regarde la video de Brackeys sur l'Object Pooling ^^
 {
     // The class representing a pool for each object we want to spawn
     [System.Serializable]
@@ -44,7 +45,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector2 position) 
+    public GameObject SpawnFromPool(string tag, Vector2 position, Quaternion rotation) 
     {
         // Method for spawning objects from a pool based on the tag. The object is returned afterwards
 
@@ -58,6 +59,7 @@ public class ObjectPooler : MonoBehaviour
         // Enable pooled object
         toSpawn.SetActive(true);
         toSpawn.transform.position = position;
+        toSpawn.transform.rotation = rotation;
 
         // Trigger methods from the interface
         IPooledObject pooledInterface = toSpawn.GetComponent<IPooledObject>();

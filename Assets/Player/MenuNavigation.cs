@@ -39,10 +39,11 @@ public class MenuNavigation : MonoBehaviour
     {
         ChangeToMenu();
 
-        OnChangeToGame += attackManager.LaunchNextAttack;
+        OnChangeToGame += attackManager.LaunchNextAttack; // Ajoute la fonction pour lancer la prochaine attaque dans l'event OnChangeToGame
     }
 
     public void ChangeToMenu()
+    // Fonction pour passer du gameplay au menu
     {
         if (isInGame)
         {
@@ -51,29 +52,30 @@ public class MenuNavigation : MonoBehaviour
             playerSprite.SetActive(false);
             playerCollision.enabled = false;
 
-            fightButton.Select();
+            fightButton.Select(); // Selectionne le bouton FIGHT par defaut
 
             isInGame = false;
         }
     }
 
     public void ChangeToGame()
+    // Fonction pour passer du menu au gameplay (faut lire les gars...)
     {   
         if (!isInGame)
         {
             hud.Backwards();
             
             playerInput.FindActionMap("UI").Disable();
-            playerCollision.enabled = true;
 
+            playerCollision.enabled = true;
             playerSprite.SetActive(true);
             transform.position = defaultPlayerPosition.position;
 
-            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(null); // Deselectionne tous les boutons
 
             isInGame = true;
 
-            OnChangeToGame.Invoke();
+            OnChangeToGame.Invoke(); // Lance l'attaque suivante quand on finit notre tour
         }
     }
 }

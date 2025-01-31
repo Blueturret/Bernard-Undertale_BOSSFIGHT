@@ -30,8 +30,8 @@ public class CharacterControls : MonoBehaviour
         groundCheck = transform.GetChild(1).transform;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
+    // Mouvements de base
     {
         if (!isBlue)
         {
@@ -44,6 +44,8 @@ public class CharacterControls : MonoBehaviour
     }
 
     private void Update()
+    // Cette fonction est dans Update() pour permettre au joueur de continuellement sauter s'il maintient la touche
+    // D'ou les deux variables wantsToJump et canJump
     {
         if(wantsToJump && isGrounded() && canJump)
         {
@@ -60,6 +62,7 @@ public class CharacterControls : MonoBehaviour
     }
 
     bool isGrounded()
+    // GroundCheck
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundMask);
     }
@@ -76,6 +79,7 @@ public class CharacterControls : MonoBehaviour
         }
 
         if (context.canceled)
+        // Au plus on maintient la touche, au plus on saute haut. Si on arrete prematurement de presser le touche, on diminue la force du saut
         {
             if(rb.linearVelocity.y > 0)
             {
@@ -96,6 +100,7 @@ public class CharacterControls : MonoBehaviour
     }
 
     public void ChangeState(int stateIndex)
+    // Fonction pour alterner entre coeur bleu et coeur rouge
     {
         switch (stateIndex)
         {
@@ -124,5 +129,20 @@ public class CharacterControls : MonoBehaviour
         sprite.color = new Color(255, 0, 0);
     }
 
-    
+    public Animator borderAnim;
+    public void tempShrink(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            borderAnim.SetBool("isSmol", true);
+        }
+    }
+
+    public void tempWiden(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            borderAnim.SetBool("isSmol", false);
+        }
+    }
 }

@@ -820,7 +820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.2, y: -112.2}
+  m_AnchoredPosition: {x: -552.2, y: -58}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &111152982
@@ -1391,6 +1391,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  borderAnim: {fileID: 1788313282}
 --- !u!114 &244754133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,37 +1566,45 @@ MonoBehaviour:
     m_ActionId: 7483f226-b551-4f26-99f5-0e8d5508668a
     m_ActionName: 'Player/ChangeToGame[/Keyboard/g]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754136}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: TakeDamage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d782d99f-ddeb-4ac2-9796-7fc58b94e732
     m_ActionName: 'Player/Damage[/Keyboard/enter]'
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dd56e7b8-02c3-43c8-8b30-1ab4c91b5b37
+    m_ActionName: 'Player/Heal[/Keyboard/space]'
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244754136}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: Heal
+      - m_Target: {fileID: 244754132}
+        m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
+        m_MethodName: tempWiden
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: dd56e7b8-02c3-43c8-8b30-1ab4c91b5b37
-    m_ActionName: 'Player/Heal[/Keyboard/space]'
+    m_ActionId: 95b61540-caef-4891-9cad-7b9bad93076c
+    m_ActionName: 'Player/Wide[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 244754132}
+        m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
+        m_MethodName: tempShrink
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ddfa369-fe40-476b-8987-8f9259844247
+    m_ActionName: 'Player/Shrink[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1829,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.2, y: -112.2}
+  m_AnchoredPosition: {x: -553, y: -43}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313458783
@@ -2990,6 +2999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac1f5dc5668c4d47bd99e268b282c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  borderAnimator: {fileID: 1788313282}
   cubePrefab: {fileID: 733459020448650495, guid: dfb3977b265a7ad4eaa92ab63b8c4070, type: 3}
   spawner: {fileID: 700053238}
 --- !u!1 &796355134
@@ -3062,7 +3072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 642.94586, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 642.94586, y: -0.000061035156}
   m_SizeDelta: {x: 1078.4606, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915384094
@@ -3275,7 +3285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.2, y: -112.2}
+  m_AnchoredPosition: {x: -552.2, y: -42}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057842913
@@ -3478,7 +3488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.2, y: -215}
+  m_AnchoredPosition: {x: -552.2, y: -160.79688}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1221746956
@@ -3785,7 +3795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.3, y: -215}
+  m_AnchoredPosition: {x: -22.3, y: -160.79688}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383304328
@@ -4030,7 +4040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.3, y: -112.2}
+  m_AnchoredPosition: {x: -22.3, y: -46}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420347105
@@ -4365,7 +4375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.3, y: -112.2}
+  m_AnchoredPosition: {x: -22.3, y: -58}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1588634321
@@ -4486,7 +4496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.2, y: -112.2}
+  m_AnchoredPosition: {x: -552.2, y: -46}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1788313276
@@ -4501,6 +4511,7 @@ GameObject:
   - component: {fileID: 1788313279}
   - component: {fileID: 1788313280}
   - component: {fileID: 1788313281}
+  - component: {fileID: 1788313282}
   m_Layer: 3
   m_Name: Fight Border
   m_TagString: Untagged
@@ -4652,6 +4663,28 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!95 &1788313282
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788313276}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6c4b77f3ba63da4bb99cd6a9c7e144c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1835927172
 GameObject:
   m_ObjectHideFlags: 0
