@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -38,5 +37,8 @@ public class PlayerHealth : MonoBehaviour
         // Change UI
         healthBar.fillAmount = health / maxHealth;
         healthText.text = health.ToString() + " / " + maxHealth.ToString();
+
+        // Delete consumed object
+        
     }
 }

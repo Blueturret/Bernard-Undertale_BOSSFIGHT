@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class HUD : MonoBehaviour
     // Toutes les fonctions pour les boutons FIGHT, ACT, ITEM & MERCY
 {
     Button currentButton;
+    CanvasGroup HUDGroup;
     
     [SerializeField] GameObject fightMenu;
     bool isInFight;
@@ -15,10 +17,10 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject mercyMenu;
     bool isInMercy;
 
-    public void Start()
+    public void Awake()
     {
-        // Stocke le dernier bouton selectionne pour pas retourner systematiquement sur FIGHT quand tu quittes le menu
         currentButton = transform.GetChild(0).GetComponent<Button>();
+        HUDGroup = GetComponent<CanvasGroup>();
     }
 
     public void Backwards()
@@ -29,17 +31,20 @@ public class HUD : MonoBehaviour
         if(isInItems) itemMenu.SetActive(false);
         if(isInMercy) mercyMenu.SetActive(false);
 
+        HUDGroup.interactable = true;
         currentButton.Select();
     }
 
     public void FIGHT()
     {
         fightMenu.SetActive(true);
+        HUDGroup.interactable = false;
 
         // Je sais que j'utilise GetComponent de facon recurrente, mais dans ce cas-ci je pense pas que ca cree des soucis de performance
         Button firstButton = fightMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
 
+        // Stocke le dernier bouton selectionne pour pas retourner systematiquement sur FIGHT quand tu quittes le menu
         currentButton = transform.GetChild(0).GetComponent<Button>();
 
         isInFight = true;
@@ -47,6 +52,7 @@ public class HUD : MonoBehaviour
     public void ACT()
     {
         actMenu.SetActive(true);
+        HUDGroup.interactable = false;
 
         Button firstButton = actMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
@@ -58,8 +64,19 @@ public class HUD : MonoBehaviour
     public void ITEMS()
     {
         itemMenu.SetActive(true);
+        HUDGroup.interactable = false;
 
-        Button firstButton = itemMenu.transform.GetChild(0).GetComponent<Button>();
+        // Vu que les items vont etre desactives une fois consumes, il faut trouver le nouveau premier item a selectionner
+        Button firstButton = null; 
+        for(int i = 0; i < itemMenu.transform.childCount; i++)
+        {
+            if (itemMenu.transform.GetChild(i).gameObject.activeInHierarchy == true)
+            {
+                firstButton = itemMenu.transform.GetChild(i).GetComponent<Button>();
+                break;
+            }
+        }
+
         firstButton.Select();
 
         currentButton = transform.GetChild(2).GetComponent<Button>();
@@ -69,6 +86,7 @@ public class HUD : MonoBehaviour
     public void MERCY()
     {
         mercyMenu.SetActive(true);
+        HUDGroup.interactable = false;
 
         Button firstButton = mercyMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();

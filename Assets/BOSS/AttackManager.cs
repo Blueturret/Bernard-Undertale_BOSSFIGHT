@@ -19,65 +19,95 @@ public class AttackManager : MonoBehaviour
     MenuNavigation playerMenu;
     [SerializeField] GameObject cubePrefab;
     [SerializeField] Transform spawner;
+    Transform spawnPoint;
 
     private void Start()
     {
         playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
         objPooler = ObjectPooler.instance;
-        
+
+        spawnPoint = GameObject.Find("Player Default Position").transform;
+
         attacks.Add(Attack1);
         attacks.Add(Attack2);
     }
 
-    void Attack1()
+    void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
     {
         isAttacking = true;
 
         borderAnimator.SetBool("isSmol", true);
-        
-        // Logique de l'attaque 1
-        for (int i = 0; i < 5; i++)
-        {
-            float defaultY = spawner.position.y;
 
-            GameObject obj = objPooler.SpawnFromPool("Obstacle", new Vector2(spawner.position.x,
-                UnityEngine.Random.Range(defaultY - 1, defaultY + 1)), Quaternion.identity);
+        // Logique de l'attaque
 
-            attackObjects.Add(obj);
-        }
+        int projectileNumber = 300;//UnityEngine.Random.Range(4, 11);
+
+        StartCoroutine(AttackWithCooldown(SpawnProjectileInCircle, .8f, projectileNumber));
 
         StartCoroutine(StopAttackAfterCooldown(5));
     }
 
-    void Attack2() 
+    void SpawnProjectileInCircle()
+    {
+        // Variables
+        float circleRadius = 3.5f;
+
+        float angle = UnityEngine.Random.Range(0, 360);
+        float x = spawnPoint.position.x + circleRadius * Mathf.Cos(angle);
+        float y = spawnPoint.position.y + circleRadius * Mathf.Sin(angle);
+
+        // Logique pour spawn l'objet
+        Vector2 position = new Vector2(x, y);
+
+        GameObject obj = ObjectPooler.instance.SpawnFromPool("Obstacle", position, Quaternion.identity);
+        attackObjects.Add(obj);
+    }
+
+    void Attack2()
     {
         isAttacking = true;
 
         // Logique de l'attaque 2
-        Transform spawnPoint = GameObject.Find("Player Default Position").transform;
+        StartCoroutine(AttackWithCooldown(SpawnColoredObstacles, 0.4f, 0, 0));
 
-        GameObject obj = objPooler.SpawnFromPool("Obstacle", new Vector2(spawnPoint.position.x + 2, spawnPoint.position.y), Quaternion.identity);
+        StartCoroutine(StopAttackAfterCooldown(10));
+    }
 
-        obj.GetComponent<SpriteRenderer>().color = Color.red;
+    void SpawnColoredObstacles()
+    {
+        Vector2 spawnPosition = new Vector2(spawnPoint.position.x + 10, spawnPoint.position.y);
+        GameObject obj = objPooler.SpawnFromPool("ColoredObstacle", spawnPosition, Quaternion.identity);
 
         attackObjects.Add(obj);
-
-        StartCoroutine(StopAttackAfterCooldown(4));
     }
 
     public void LaunchNextAttack()
     {
-        if (isAttacking) return; 
-        
+        if (isAttacking) return;
+
         if (currentIndex != attacks.Count - 1) currentIndex++;
         attacks[currentIndex].Invoke();
+    }
+
+    IEnumerator AttackWithCooldown(Action action, float cooldown, int iterations, int currentIteration=0)
+    {
+        if (iterations != 0 && currentIteration >= iterations)
+        {
+            StopCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
+        }
+        action.Invoke();
+
+        yield return new WaitForSeconds(cooldown);
+
+        currentIteration += 1;
+        StartCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
     }
 
     IEnumerator StopAttackAfterCooldown(float cooldown)
     // Arrete l'attaque apres une certaine duree
     {
         yield return new WaitForSeconds(cooldown);
-        
+
         // Desactive tous les objets a la fin d'une attaque
         foreach (GameObject obj in attackObjects.ToArray())
         {
@@ -89,5 +119,6 @@ public class AttackManager : MonoBehaviour
         borderAnimator.SetBool("isSmol", false); // Remettre le bord a la bonne taille pour eviter de casser l'UI
 
         playerMenu.ChangeToMenu();
+        StopAllCoroutines();
     }
 }

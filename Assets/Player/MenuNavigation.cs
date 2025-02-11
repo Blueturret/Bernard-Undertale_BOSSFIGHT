@@ -45,8 +45,8 @@ public class MenuNavigation : MonoBehaviour
     public void ChangeToMenu()
     // Fonction pour passer du gameplay au menu
     {
-        if (isInGame)
-        {
+        //if (isInGame)
+        //{
             playerInput.FindActionMap("UI").Enable();
 
             playerSprite.SetActive(false);
@@ -55,7 +55,7 @@ public class MenuNavigation : MonoBehaviour
             fightButton.Select(); // Selectionne le bouton FIGHT par defaut
 
             isInGame = false;
-        }
+        //}
     }
 
     public void ChangeToGame()

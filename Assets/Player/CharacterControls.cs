@@ -128,21 +128,4 @@ public class CharacterControls : MonoBehaviour
         SpriteRenderer sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         sprite.color = new Color(255, 0, 0);
     }
-
-    public Animator borderAnim;
-    public void tempShrink(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            borderAnim.SetBool("isSmol", true);
-        }
-    }
-
-    public void tempWiden(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            borderAnim.SetBool("isSmol", false);
-        }
-    }
 }

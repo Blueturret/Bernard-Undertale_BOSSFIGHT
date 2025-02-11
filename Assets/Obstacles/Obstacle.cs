@@ -2,18 +2,26 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IPooledObject
 {
-    [SerializeField] float damage;
+    GameObject player;
     Rigidbody2D rb;
+
+    [Header("Properties")]
+    [SerializeField] float damage;
+    [SerializeField] float speed;
 
     private void Awake()
     {
+        player = GameObject.FindWithTag("Player");
+        
         rb = GetComponent<Rigidbody2D>();   
     }
 
     // Mouvement de base de cet obstacle
     public void OnObjectSpawned()
     {
-        rb.linearVelocity = new Vector2 (-3, Random.Range(-2, 2));
+        Vector2 dir = player.transform.position - transform.position;
+        
+        rb.linearVelocity = dir.normalized * speed;
     }
 
     // Gestion des degats
@@ -22,7 +30,7 @@ public class Obstacle : MonoBehaviour, IPooledObject
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
