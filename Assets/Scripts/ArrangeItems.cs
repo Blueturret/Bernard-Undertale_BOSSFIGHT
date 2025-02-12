@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ArrangeItems : MonoBehaviour
 // Arrange les items dans l'inventaire pendant le runtime, pour eviter d'avoir des trous quand tu te soignes
@@ -8,7 +10,7 @@ public class ArrangeItems : MonoBehaviour
     MenuNavigation playerMenu;
     
     List<GameObject> itemList = new List<GameObject>();
-    List<Transform> slotsList = new List<Transform>();
+    List<Vector2> slotsList = new List<Vector2>();
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class ArrangeItems : MonoBehaviour
         for(int i=0; i < transform.childCount; i++)
         {
             itemList.Add(transform.GetChild(i).gameObject);
-            slotsList.Add(transform.GetChild(i));
+            slotsList.Add(transform.GetChild(i).position);
         }
     }
 
@@ -33,15 +35,13 @@ public class ArrangeItems : MonoBehaviour
 
         playerMenu.ChangeToMenu();
         ArrangeInventory();
-
     }
 
     void ArrangeInventory()
     {
         for(int index=0; index < itemList.Count; index++)
         {
-            itemList[index].transform.position = slotsList[index].position;
-            Debug.Log(itemList[index].name + " at position : " + slotsList[index].position);
+            itemList[index].transform.position = slotsList[index];
         }
     }
 }
