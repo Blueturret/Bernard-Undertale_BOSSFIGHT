@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,7 +77,7 @@ public class HUD : MonoBehaviour
             }
         }
 
-        firstButton.Select();
+        if(firstButton != null) firstButton.Select();
 
         currentButton = transform.GetChild(2).GetComponent<Button>();
 
