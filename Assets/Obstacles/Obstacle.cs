@@ -1,31 +1,24 @@
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour, IPooledObject
+    // Classe mere pour tous les obstacles
 {
-    GameObject player;
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     [Header("Properties")]
-    [SerializeField] float damage;
-    [SerializeField] float speed;
+    public int damage;
+    public float speed;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        player = GameObject.FindWithTag("Player");
-        
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Mouvement de base de cet obstacle
-    public void OnObjectSpawned()
-    {
-        Vector2 dir = player.transform.position - transform.position;
-        
-        rb.linearVelocity = dir.normalized * speed;
-    }
+    // Methode appelee quand l'objet sort de sa pool
+    public virtual void OnObjectSpawned() { }
 
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     // Gestion des degats
-    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

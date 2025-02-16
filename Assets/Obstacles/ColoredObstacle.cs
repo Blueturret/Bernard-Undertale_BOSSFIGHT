@@ -1,22 +1,11 @@
 using UnityEngine;
 
-public class ColoredObstacle : MonoBehaviour, IPooledObject
+public class ColoredObstacle : Obstacle
 {
-    Rigidbody2D rb;
-
-    [Header("Properties")]
     int isOrange;
-    [SerializeField] float speed;
-    [SerializeField] float damage;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
-    // Update is called once per frame
-    void IPooledObject.OnObjectSpawned()
+    protected override void Awake() { base.Awake(); } // Est-ce que cette ligne est vraiment necessaire pour appeler le Awake() par defaut ?
+    public override void OnObjectSpawned()
     {
         isOrange = Random.Range(0, 2);
         UpdateColor();
@@ -24,7 +13,7 @@ public class ColoredObstacle : MonoBehaviour, IPooledObject
         rb.linearVelocity = new Vector2(-1, 0) * speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

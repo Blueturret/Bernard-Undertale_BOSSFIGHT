@@ -4744,7 +4744,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_Sprite: {fileID: 164331978098342766, guid: 67252d615f0054b40802d7a43183914f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4985,6 +4985,9 @@ MonoBehaviour:
   - tag: ColoredObstacle
     prefab: {fileID: 1964348324879643096, guid: 6098eb1252379e44b9010d3228a8014c, type: 3}
     size: 15
+  - tag: Boomerang
+    prefab: {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
+    size: 2
 --- !u!1 &1861922076
 GameObject:
   m_ObjectHideFlags: 0

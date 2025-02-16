@@ -16,6 +16,8 @@ public class AttackManager : MonoBehaviour
     int currentIndex = -1; // L'index de l'attaque qu'on veut effectuer
     bool isAttacking = false;
 
+    GameObject player;
+    CharacterControls playerControls;
     MenuNavigation playerMenu;
     [SerializeField] GameObject cubePrefab;
     [SerializeField] Transform spawner;
@@ -23,13 +25,16 @@ public class AttackManager : MonoBehaviour
 
     private void Start()
     {
-        playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
+        player = GameObject.Find("Player");
+        playerControls = player.GetComponent<CharacterControls>();
+        playerMenu = player.GetComponent<MenuNavigation>();
         objPooler = ObjectPooler.instance;
 
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         attacks.Add(Attack1);
         attacks.Add(Attack2);
+        attacks.Add(Attack3);
     }
 
     void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
@@ -63,7 +68,7 @@ public class AttackManager : MonoBehaviour
         attackObjects.Add(obj);
     }
 
-    void Attack2()
+    void Attack2() // Obstacles bleus et oranges qui vont de droite a gauche
     {
         isAttacking = true;
 
@@ -74,14 +79,37 @@ public class AttackManager : MonoBehaviour
     }
 
     void SpawnColoredObstacles()
+    // Fonction pour faire spawn les obstacles bleus et oranges
     {
         Vector2 spawnPosition = new Vector2(spawnPoint.position.x + 10, spawnPoint.position.y);
         GameObject obj = objPooler.SpawnFromPool("ColoredObstacle", spawnPosition, Quaternion.identity);
 
         attackObjects.Add(obj);
     }
+    void Attack3()
+    {
+        int amount = 2;
+        // Spawn les boomerangs
+        for(int i=0; i <= amount; i++)
+        {
+            float circleRadius = 6.5f;
+
+            float angle = UnityEngine.Random.Range(0, 360);
+            float x = spawnPoint.position.x + circleRadius * Mathf.Cos(angle);
+            float y = spawnPoint.position.y + circleRadius * Mathf.Sin(angle);
+
+            GameObject obj = ObjectPooler.instance.SpawnFromPool("Boomerang", new Vector2(x, y), Quaternion.identity);
+
+            attackObjects.Add(obj);
+        }
+
+        StartCoroutine(RandomizePlayerColor());
+
+        StartCoroutine(StopAttackAfterCooldown(10f));
+    }
 
     public void LaunchNextAttack()
+    // Fonction pour lancer la prochaine attaque
     {
         if (isAttacking) return;
 
@@ -89,7 +117,26 @@ public class AttackManager : MonoBehaviour
         attacks[currentIndex].Invoke();
     }
 
+    //-----------------------------------------------------------------//
+    //------------------------- IEnumerators -------------------------//
+    //---------------------------------------------------------------//
+
+    IEnumerator RandomizePlayerColor()
+    // Aleatoirement changer la couleurs du personnage, apres un laps de temps egalement aleatoire
+    {
+        int newColor = UnityEngine.Random.Range(0, 2);
+        float cooldown = UnityEngine.Random.Range(2.1f, 3f);
+
+        yield return new WaitForSeconds(cooldown);
+
+        playerControls.ChangeState(newColor);
+
+        StartCoroutine(RandomizePlayerColor());
+    }
+
     IEnumerator AttackWithCooldown(Action action, float cooldown, int iterations, int currentIteration=0)
+    // Methode generique pour lancer une fonction, avec un cooldown,
+    // un nombre 'iterations' de fois (pendant toute la duree de l'attaque si 'iterations' = 0)
     {
         if (iterations != 0 && currentIteration >= iterations)
         {
