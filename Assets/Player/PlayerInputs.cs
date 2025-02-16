@@ -46,72 +46,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TurnRed"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
-                    ""id"": ""5ade5fc7-6ae9-48d6-b854-1fc0265d1672"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TurnBlue"",
-                    ""type"": ""Button"",
-                    ""id"": ""ebd0f13d-bc11-41ed-9c99-83f6c371532c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeToMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""c21c13aa-1fd2-4631-b8a1-9347575a23ad"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeToGame"",
-                    ""type"": ""Button"",
-                    ""id"": ""7483f226-b551-4f26-99f5-0e8d5508668a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Damage"",
-                    ""type"": ""Button"",
-                    ""id"": ""d782d99f-ddeb-4ac2-9796-7fc58b94e732"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Heal"",
-                    ""type"": ""Button"",
-                    ""id"": ""dd56e7b8-02c3-43c8-8b30-1ab4c91b5b37"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Wide"",
-                    ""type"": ""Button"",
-                    ""id"": ""95b61540-caef-4891-9cad-7b9bad93076c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Shrink"",
-                    ""type"": ""Button"",
-                    ""id"": ""7ddfa369-fe40-476b-8987-8f9259844247"",
+                    ""id"": ""f01742fe-bf54-46c4-996a-8d058054d34c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -231,89 +168,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""91e224f5-3cea-4813-9d15-3b3d4802d8a0"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""id"": ""c556edfa-ec59-40d7-9926-bfe6b87320fb"",
+                    ""path"": ""<Keyboard>/insert"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""TurnRed"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60812897-0328-4227-9b10-e2a9d42cca86"",
-                    ""path"": ""<Keyboard>/t"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""TurnBlue"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f71561b5-f23c-43e9-9be0-4d4012391266"",
-                    ""path"": ""<Keyboard>/semicolon"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeToMenu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5bcd062f-85be-4f9f-bf56-36334eaa6d44"",
-                    ""path"": ""<Keyboard>/g"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeToGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cc1fa42a-5e31-4a9c-977b-195d68563cb9"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Damage"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bf29473b-ac6d-4b61-9d54-dc43f63f002e"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Heal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""438407a5-46ef-47c3-87d2-925e409bd4de"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Wide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""309906ff-587e-4d39-942f-13f36835cc8a"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shrink"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -859,14 +719,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_TurnRed = m_Player.FindAction("TurnRed", throwIfNotFound: true);
-        m_Player_TurnBlue = m_Player.FindAction("TurnBlue", throwIfNotFound: true);
-        m_Player_ChangeToMenu = m_Player.FindAction("ChangeToMenu", throwIfNotFound: true);
-        m_Player_ChangeToGame = m_Player.FindAction("ChangeToGame", throwIfNotFound: true);
-        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
-        m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
-        m_Player_Wide = m_Player.FindAction("Wide", throwIfNotFound: true);
-        m_Player_Shrink = m_Player.FindAction("Shrink", throwIfNotFound: true);
+        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -948,28 +801,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_TurnRed;
-    private readonly InputAction m_Player_TurnBlue;
-    private readonly InputAction m_Player_ChangeToMenu;
-    private readonly InputAction m_Player_ChangeToGame;
-    private readonly InputAction m_Player_Damage;
-    private readonly InputAction m_Player_Heal;
-    private readonly InputAction m_Player_Wide;
-    private readonly InputAction m_Player_Shrink;
+    private readonly InputAction m_Player_Crouch;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @TurnRed => m_Wrapper.m_Player_TurnRed;
-        public InputAction @TurnBlue => m_Wrapper.m_Player_TurnBlue;
-        public InputAction @ChangeToMenu => m_Wrapper.m_Player_ChangeToMenu;
-        public InputAction @ChangeToGame => m_Wrapper.m_Player_ChangeToGame;
-        public InputAction @Damage => m_Wrapper.m_Player_Damage;
-        public InputAction @Heal => m_Wrapper.m_Player_Heal;
-        public InputAction @Wide => m_Wrapper.m_Player_Wide;
-        public InputAction @Shrink => m_Wrapper.m_Player_Shrink;
+        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -985,30 +824,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @TurnRed.started += instance.OnTurnRed;
-            @TurnRed.performed += instance.OnTurnRed;
-            @TurnRed.canceled += instance.OnTurnRed;
-            @TurnBlue.started += instance.OnTurnBlue;
-            @TurnBlue.performed += instance.OnTurnBlue;
-            @TurnBlue.canceled += instance.OnTurnBlue;
-            @ChangeToMenu.started += instance.OnChangeToMenu;
-            @ChangeToMenu.performed += instance.OnChangeToMenu;
-            @ChangeToMenu.canceled += instance.OnChangeToMenu;
-            @ChangeToGame.started += instance.OnChangeToGame;
-            @ChangeToGame.performed += instance.OnChangeToGame;
-            @ChangeToGame.canceled += instance.OnChangeToGame;
-            @Damage.started += instance.OnDamage;
-            @Damage.performed += instance.OnDamage;
-            @Damage.canceled += instance.OnDamage;
-            @Heal.started += instance.OnHeal;
-            @Heal.performed += instance.OnHeal;
-            @Heal.canceled += instance.OnHeal;
-            @Wide.started += instance.OnWide;
-            @Wide.performed += instance.OnWide;
-            @Wide.canceled += instance.OnWide;
-            @Shrink.started += instance.OnShrink;
-            @Shrink.performed += instance.OnShrink;
-            @Shrink.canceled += instance.OnShrink;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1019,30 +837,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @TurnRed.started -= instance.OnTurnRed;
-            @TurnRed.performed -= instance.OnTurnRed;
-            @TurnRed.canceled -= instance.OnTurnRed;
-            @TurnBlue.started -= instance.OnTurnBlue;
-            @TurnBlue.performed -= instance.OnTurnBlue;
-            @TurnBlue.canceled -= instance.OnTurnBlue;
-            @ChangeToMenu.started -= instance.OnChangeToMenu;
-            @ChangeToMenu.performed -= instance.OnChangeToMenu;
-            @ChangeToMenu.canceled -= instance.OnChangeToMenu;
-            @ChangeToGame.started -= instance.OnChangeToGame;
-            @ChangeToGame.performed -= instance.OnChangeToGame;
-            @ChangeToGame.canceled -= instance.OnChangeToGame;
-            @Damage.started -= instance.OnDamage;
-            @Damage.performed -= instance.OnDamage;
-            @Damage.canceled -= instance.OnDamage;
-            @Heal.started -= instance.OnHeal;
-            @Heal.performed -= instance.OnHeal;
-            @Heal.canceled -= instance.OnHeal;
-            @Wide.started -= instance.OnWide;
-            @Wide.performed -= instance.OnWide;
-            @Wide.canceled -= instance.OnWide;
-            @Shrink.started -= instance.OnShrink;
-            @Shrink.performed -= instance.OnShrink;
-            @Shrink.canceled -= instance.OnShrink;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1227,14 +1024,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnTurnRed(InputAction.CallbackContext context);
-        void OnTurnBlue(InputAction.CallbackContext context);
-        void OnChangeToMenu(InputAction.CallbackContext context);
-        void OnChangeToGame(InputAction.CallbackContext context);
-        void OnDamage(InputAction.CallbackContext context);
-        void OnHeal(InputAction.CallbackContext context);
-        void OnWide(InputAction.CallbackContext context);
-        void OnShrink(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

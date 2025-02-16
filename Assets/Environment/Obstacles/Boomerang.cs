@@ -1,8 +1,11 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Boomerang : Obstacle
 {
+    AttackManager atkMgr;
+    List<GameObject> attackObjects;
+
     Transform playerPosition;
 
     [SerializeField] float repelForce;
@@ -11,6 +14,9 @@ public class Boomerang : Obstacle
     {
         base.Awake();
         playerPosition = GameObject.Find("Player").transform;
+
+        atkMgr = AttackManager.instance;
+        attackObjects = AttackManager.attackObjects;
     }
 
     void FixedUpdate()
@@ -27,6 +33,11 @@ public class Boomerang : Obstacle
         if (collision.CompareTag("Boomerang"))
         {
             rb.AddForce((transform.position - collision.transform.position) * repelForce);
+        }
+
+        if (attackObjects.Count <= 1)
+        {
+            atkMgr.StopCurrentAttack();
         }
     }
 }

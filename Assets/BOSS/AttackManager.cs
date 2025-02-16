@@ -6,8 +6,10 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 // FONCTIONNEMENT : Chaque attaque est representee par une fonction, qu'on appelle selon certains criteres
 {
-    public List<Action> attacks = new List<Action>(); // Liste des differentes attaques
-    List<GameObject> attackObjects = new List<GameObject>(); // Liste de tous les objets d'une attaque
+    public static AttackManager instance { get; private set; } // Singleton
+
+    List<Action> attacks = new List<Action>(); // Liste des differentes attaques
+    public static List<GameObject> attackObjects { get; private set; } = new List<GameObject>(); // Liste de tous les objets d'une attaque
 
     ObjectPooler objPooler; // Object Pooling
 
@@ -25,6 +27,8 @@ public class AttackManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this; // Singleton
+        
         player = GameObject.Find("Player");
         playerControls = player.GetComponent<CharacterControls>();
         playerMenu = player.GetComponent<MenuNavigation>();
@@ -32,10 +36,10 @@ public class AttackManager : MonoBehaviour
 
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
-        attacks.Add(NullAttack);
+        //attacks.Add(NullAttack);
         //attacks.Add(Attack1);
         //attacks.Add(Attack2);
-        //attacks.Add(Attack3);
+        attacks.Add(Attack3);
         //attacks.Add(Attack4);
     }
 
@@ -92,11 +96,11 @@ public class AttackManager : MonoBehaviour
     }
     void Attack3()
     {
-        int amount = 2;
+        int amount = 3;
         // Spawn les boomerangs
         for(int i=0; i <= amount; i++)
         {
-            float circleRadius = 6.5f;
+            float circleRadius = 5.5f;
 
             float angle = UnityEngine.Random.Range(0, 360);
             float x = spawnPoint.position.x + circleRadius * Mathf.Cos(angle);
@@ -125,6 +129,24 @@ public class AttackManager : MonoBehaviour
 
         if (currentIndex != attacks.Count - 1) currentIndex++;
         attacks[currentIndex].Invoke();
+    }
+
+    public void StopCurrentAttack()
+    // Fonction pour arreter l'/les attaque(s) en cours (faut apprendre a lire l'anglais les mecs/filles/helicopteres/eponges...)
+    {
+        // Desactive tous les objets a la fin d'une attaque
+        foreach (GameObject obj in attackObjects.ToArray())
+        {
+            obj.SetActive(false);
+            attackObjects.Remove(obj);
+        }
+
+        isAttacking = false;
+
+        borderAnimator.SetBool("isSmol", false); // Remettre le bord a la bonne taille pour eviter de casser l'UI
+
+        playerMenu.ChangeToMenu();
+        StopAllCoroutines();
     }
 
     //-----------------------------------------------------------------//
@@ -165,17 +187,6 @@ public class AttackManager : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldown);
 
-        // Desactive tous les objets a la fin d'une attaque
-        foreach (GameObject obj in attackObjects.ToArray())
-        {
-            obj.SetActive(false);
-        }
-
-        isAttacking = false;
-
-        borderAnimator.SetBool("isSmol", false); // Remettre le bord a la bonne taille pour eviter de casser l'UI
-
-        playerMenu.ChangeToMenu();
-        StopAllCoroutines();
+        StopCurrentAttack();
     }
 }

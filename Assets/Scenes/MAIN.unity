@@ -768,11 +768,11 @@ MonoBehaviour:
       - m_Target: {fileID: 148537444}
         m_TargetAssemblyTypeName: ArrangeItems, Assembly-CSharp
         m_MethodName: ConsumeItem
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1530,79 +1530,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 244754132}
         m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5ade5fc7-6ae9-48d6-b854-1fc0265d1672
-    m_ActionName: 'Player/TurnRed[/Keyboard/r]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754132}
-        m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ebd0f13d-bc11-41ed-9c99-83f6c371532c
-    m_ActionName: 'Player/TurnBlue[/Keyboard/t]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754135}
-        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: ChangeToMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c21c13aa-1fd2-4631-b8a1-9347575a23ad
-    m_ActionName: 'Player/ChangeToMenu[/Keyboard/m]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754135}
-        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: ChangeToGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7483f226-b551-4f26-99f5-0e8d5508668a
-    m_ActionName: 'Player/ChangeToGame[/Keyboard/g]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d782d99f-ddeb-4ac2-9796-7fc58b94e732
-    m_ActionName: 'Player/Damage[/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dd56e7b8-02c3-43c8-8b30-1ab4c91b5b37
-    m_ActionName: 'Player/Heal[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754132}
-        m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
-        m_MethodName: tempWiden
+        m_MethodName: Crouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1612,24 +1540,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 95b61540-caef-4891-9cad-7b9bad93076c
-    m_ActionName: 'Player/Wide[/Keyboard/w]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 244754132}
-        m_TargetAssemblyTypeName: CharacterControls, Assembly-CSharp
-        m_MethodName: tempShrink
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7ddfa369-fe40-476b-8987-8f9259844247
-    m_ActionName: 'Player/Shrink[/Keyboard/s]'
+    m_ActionId: f01742fe-bf54-46c4-996a-8d058054d34c
+    m_ActionName: 'Player/Crouch[/Keyboard/ctrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2393,6 +2305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingSoftPlatform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7639071318531395443, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.386696
@@ -2553,6 +2469,10 @@ PrefabInstance:
     - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_Name
       value: MovingSoftPlatform (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639071318531395443, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3060,6 +2980,10 @@ PrefabInstance:
     - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_Name
       value: MovingSoftPlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639071318531395443, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3861,11 +3785,11 @@ MonoBehaviour:
       - m_Target: {fileID: 148537444}
         m_TargetAssemblyTypeName: ArrangeItems, Assembly-CSharp
         m_MethodName: ConsumeItem
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 40
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4282,11 +4206,11 @@ MonoBehaviour:
       - m_Target: {fileID: 148537444}
         m_TargetAssemblyTypeName: ArrangeItems, Assembly-CSharp
         m_MethodName: ConsumeItem
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 40
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4772,11 +4696,11 @@ MonoBehaviour:
       - m_Target: {fileID: 148537444}
         m_TargetAssemblyTypeName: ArrangeItems, Assembly-CSharp
         m_MethodName: ConsumeItem
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4850,7 +4774,7 @@ GameObject:
   - component: {fileID: 1542205615}
   - component: {fileID: 1542205616}
   m_Layer: 5
-  m_Name: Top
+  m_Name: BlackBackground_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5366,16 +5290,19 @@ MonoBehaviour:
   pools:
   - tag: Obstacle
     prefab: {fileID: 733459020448650495, guid: dfb3977b265a7ad4eaa92ab63b8c4070, type: 3}
-    size: 50
+    size: 20
   - tag: ColoredObstacle
     prefab: {fileID: 1964348324879643096, guid: 6098eb1252379e44b9010d3228a8014c, type: 3}
     size: 15
   - tag: Boomerang
     prefab: {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
-    size: 2
+    size: 3
   - tag: FloorIsLava
     prefab: {fileID: 4833538303688685151, guid: 28dd48e4cd356764b8de741f1d155f66, type: 3}
     size: 1
+  - tag: SoftPlatforms
+    prefab: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+    size: 8
 --- !u!1 &1861922076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5880,6 +5807,10 @@ PrefabInstance:
     - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_Name
       value: MovingSoftPlatform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7639071318531395443, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
       propertyPath: m_LocalPosition.x

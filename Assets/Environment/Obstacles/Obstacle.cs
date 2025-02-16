@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 public class Obstacle : MonoBehaviour, IPooledObject
     // Classe mere pour tous les obstacles
 {
+    List<GameObject> attackObjects;
     protected Rigidbody2D rb;
 
     [Header("Properties")]
@@ -11,6 +13,8 @@ public class Obstacle : MonoBehaviour, IPooledObject
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        attackObjects = AttackManager.attackObjects;
     }
 
     // Methode appelee quand l'objet sort de sa pool
@@ -23,6 +27,8 @@ public class Obstacle : MonoBehaviour, IPooledObject
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             gameObject.SetActive(false);
+
+            attackObjects.Remove(gameObject);
         }
     }
 }

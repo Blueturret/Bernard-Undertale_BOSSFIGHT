@@ -1,13 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
-using System.Security.Cryptography;
 
 public class ArrangeItems : MonoBehaviour
 // Arrange les items dans l'inventaire pendant le runtime, pour eviter d'avoir des trous quand tu te soignes
 {
     MenuNavigation playerMenu;
+    PlayerHealth playerHealth;
     GameObject noFoodText;
     HUD hud;
 
@@ -17,6 +16,7 @@ public class ArrangeItems : MonoBehaviour
     private void Awake()
     {
         playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
         hud = GameObject.Find("HUD").GetComponent<HUD>();
 
@@ -34,8 +34,10 @@ public class ArrangeItems : MonoBehaviour
         }
     }
 
-    public void ConsumeItem()
+    public void ConsumeItem(int healAmount)
     {
+        playerHealth.Heal(healAmount);
+        
         GameObject button = EventSystem.current.currentSelectedGameObject;
 
         button.SetActive(false);

@@ -20,17 +20,24 @@ public class CharacterControls : MonoBehaviour
     bool isBlue = false;
 
 
-        [Header("GroundCheck")]
-    float coyoteTime = .05f;
+    [Header("GroundCheck")]
+    float coyoteTime = .08f;
     float coyoteTimeCounter;
     Transform groundCheck;  
     [SerializeField] LayerMask groundMask;
+
+
+    float defaultX;
+    float defaultY;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.GetChild(1).transform;
+
+        defaultX = transform.localScale.x;
+        defaultY = transform.localScale.y;
     }
 
     void FixedUpdate()
@@ -141,5 +148,19 @@ public class CharacterControls : MonoBehaviour
 
         SpriteRenderer sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         sprite.color = new Color(255, 0, 0);
+    }
+
+    public void Crouch(InputAction.CallbackContext context)
+    // Pourquoi j'ai fait ca...
+    {
+        if (context.performed)
+        {
+            transform.localScale = new Vector3(defaultX * 1.3f, defaultY / 2, transform.localScale.z);
+        }
+
+        if(context.canceled)
+        {
+            transform.localScale = new Vector3(defaultX, defaultY, transform.localScale.z);
+        }
     }
 }
