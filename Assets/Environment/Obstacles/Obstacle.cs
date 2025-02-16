@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Obstacle : MonoBehaviour, IPooledObject
     // Classe mere pour tous les obstacles
 {

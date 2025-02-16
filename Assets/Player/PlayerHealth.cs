@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
 
-    [SerializeField] float health;
+    float health;
     float maxHealth = 92;
 
     private void Start()

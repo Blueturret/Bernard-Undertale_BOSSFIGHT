@@ -14,12 +14,15 @@ public class CharacterControls : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] float gravityScale = 6;
     [SerializeField] float jumpCooldown = 0.5f;
+
     bool wantsToJump = false;
     bool canJump = true;
     bool isBlue = false;
 
 
         [Header("GroundCheck")]
+    float coyoteTime = .05f;
+    float coyoteTimeCounter;
     Transform groundCheck;  
     [SerializeField] LayerMask groundMask;
 
@@ -47,7 +50,16 @@ public class CharacterControls : MonoBehaviour
     // Cette fonction est dans Update() pour permettre au joueur de continuellement sauter s'il maintient la touche
     // D'ou les deux variables wantsToJump et canJump
     {
-        if(wantsToJump && isGrounded() && canJump)
+        if (isGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime; // Decreases the coyoteTimeCounter
+        }
+
+        if (wantsToJump && coyoteTimeCounter > 0 && canJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
@@ -56,6 +68,7 @@ public class CharacterControls : MonoBehaviour
     }
 
     public void Move(InputAction.CallbackContext context)
+    // Movement input
     {
         horizontalInput = context.ReadValue<Vector2>().x;
         verticalInput = context.ReadValue<Vector2>().y;
@@ -66,12 +79,10 @@ public class CharacterControls : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundMask);
     }
+
     public void Jump(InputAction.CallbackContext context)
     {
-        if(!isBlue)
-        {
-            return;
-        }
+        if(!isBlue) return;
 
         if (context.performed)
         {
@@ -87,6 +98,8 @@ public class CharacterControls : MonoBehaviour
             }
             
             wantsToJump = false;
+
+            coyoteTimeCounter = 0;
         }
     }
 
@@ -99,6 +112,7 @@ public class CharacterControls : MonoBehaviour
         canJump = true;
     }
 
+    // Handling heart color
     public void ChangeState(int stateIndex)
     // Fonction pour alterner entre coeur bleu et coeur rouge
     {
