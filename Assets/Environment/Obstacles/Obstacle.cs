@@ -3,7 +3,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour, IPooledObject
     // Classe mere pour tous les obstacles
 {
-    List<GameObject> attackObjects;
+    protected List<GameObject> attackObjects;
     protected Rigidbody2D rb;
 
     [Header("Properties")]

@@ -1,29 +1,32 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boomerang : Obstacle
 {
-    AttackManager atkMgr;
-    List<GameObject> attackObjects;
-
     Transform playerPosition;
 
     [SerializeField] float repelForce;
+
+    float maxVelocity;
 
     protected override void Awake()
     {
         base.Awake();
         playerPosition = GameObject.Find("Player").transform;
+    }
 
-        atkMgr = AttackManager.instance;
-        attackObjects = AttackManager.attackObjects;
+    public override void OnObjectSpawned()
+    {
+        speed = 0;
+        maxVelocity = 74.999f; // Mathf.Pow(Vector2.Distance(playerPosition.position, transform.position), 2);
     }
 
     void FixedUpdate()
     {
-        float velocity = speed * Mathf.Pow(Vector2.Distance(playerPosition.position, transform.position), 2);
+        speed = Mathf.Lerp(0, maxVelocity, Time.deltaTime * 75);
+        print(speed);
+
         rb.AddForce((playerPosition.position - transform.position) * speed * Time.deltaTime);
-        rb.AddTorque(10f);
+        rb.AddTorque(15);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -33,11 +36,6 @@ public class Boomerang : Obstacle
         if (collision.CompareTag("Boomerang"))
         {
             rb.AddForce((transform.position - collision.transform.position) * repelForce);
-        }
-
-        if (attackObjects.Count <= 1)
-        {
-            atkMgr.StopCurrentAttack();
         }
     }
 }

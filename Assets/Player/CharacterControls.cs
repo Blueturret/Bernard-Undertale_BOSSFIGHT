@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class CharacterControls : MonoBehaviour
@@ -21,7 +20,7 @@ public class CharacterControls : MonoBehaviour
 
 
     [Header("GroundCheck")]
-    float coyoteTime = .08f;
+    float coyoteTime = .12f;
     float coyoteTimeCounter;
     Transform groundCheck;  
     [SerializeField] LayerMask groundMask;

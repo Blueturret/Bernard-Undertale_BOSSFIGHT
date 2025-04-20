@@ -38,10 +38,10 @@ public class ColoredObstacle : Obstacle
         switch(isOrange)
         {
             case 0:
-                GetComponent<SpriteRenderer>().color = new Color32(252, 166, 0, 255);
+                GetComponent<SpriteRenderer>().color = new Color32(252, 166, 0, 150);
                 break;
             case 1:
-                GetComponent<SpriteRenderer>().color = new Color32(66, 252, 255, 255);
+                GetComponent<SpriteRenderer>().color = new Color32(66, 252, 255, 150);
                 break;
         }
     }

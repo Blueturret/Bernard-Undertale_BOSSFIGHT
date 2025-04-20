@@ -16,6 +16,8 @@ public class FloorIsLavaObstacle : Obstacle
 
     public override void OnObjectSpawned()
     {
+        transform.position = new Vector2(transform.position.x + 15, -3.35f);
+
         canDamage = true;
         rb.linearVelocity = -Vector2.right * speed;
 
@@ -54,7 +56,7 @@ public class FloorIsLavaObstacle : Obstacle
         {
             yield return new WaitForSeconds(4);
 
-            transform.position = new Vector2(9, -2.9f);
+            transform.position = new Vector2(transform.position.x + 15, -2.9f);
 
             StartCoroutine(ResetPosition());
         }

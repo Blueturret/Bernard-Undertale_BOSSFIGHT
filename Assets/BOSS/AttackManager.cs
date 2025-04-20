@@ -11,36 +11,31 @@ public class AttackManager : MonoBehaviour
     List<Action> attacks = new List<Action>(); // Liste des differentes attaques
     public static List<GameObject> attackObjects { get; private set; } = new List<GameObject>(); // Liste de tous les objets d'une attaque
 
-    ObjectPooler objPooler; // Object Pooling
-
     [SerializeField] Animator borderAnimator; // Animator du bord du terrain, avec deux animations pour le rétrécir et le remettre par défaut
-
-    int currentIndex = -1; // L'index de l'attaque qu'on veut effectuer
-    bool isAttacking = false;
 
     GameObject player;
     CharacterControls playerControls;
     MenuNavigation playerMenu;
-    [SerializeField] GameObject cubePrefab;
-    [SerializeField] Transform spawner;
     Transform spawnPoint;
 
-    private void Start()
+    int currentIndex = -1; // L'index de l'attaque qu'on veut effectuer
+    bool isAttacking = false;
+
+    private void Awake()
     {
         instance = this; // Singleton
-        
+
         player = GameObject.Find("Player");
         playerControls = player.GetComponent<CharacterControls>();
         playerMenu = player.GetComponent<MenuNavigation>();
-        objPooler = ObjectPooler.instance;
 
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
         //attacks.Add(Attack1);
         //attacks.Add(Attack2);
-        attacks.Add(Attack3);
-        //attacks.Add(Attack4);
+        //attacks.Add(Attack3);
+        attacks.Add(Attack4);
     }
 
     void NullAttack() { } // Empty fonction to prevent error when 'attacks' list is empty
@@ -90,36 +85,64 @@ public class AttackManager : MonoBehaviour
     // Fonction pour faire spawn les obstacles bleus et oranges
     {
         Vector2 spawnPosition = new Vector2(spawnPoint.position.x + 10, spawnPoint.position.y);
-        GameObject obj = objPooler.SpawnFromPool("ColoredObstacle", spawnPosition, Quaternion.identity);
+        GameObject obj = ObjectPooler.instance.SpawnFromPool("ColoredObstacle", spawnPosition, Quaternion.identity);
 
         attackObjects.Add(obj);
     }
-    void Attack3()
+    void Attack3() // Boomerangs
     {
-        int amount = 3;
-        // Spawn les boomerangs
-        for(int i=0; i <= amount; i++)
-        {
-            float circleRadius = 5.5f;
-
-            float angle = UnityEngine.Random.Range(0, 360);
-            float x = spawnPoint.position.x + circleRadius * Mathf.Cos(angle);
-            float y = spawnPoint.position.y + circleRadius * Mathf.Sin(angle);
-
-            GameObject obj = ObjectPooler.instance.SpawnFromPool("Boomerang", new Vector2(x, y), Quaternion.identity);
-
-            attackObjects.Add(obj);
-        }
+        // Spawn une plateforme au milieu de l'ecran
+        Vector2 platformSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - .3f);
+        GameObject softPlatform = ObjectPooler.instance.SpawnFromPool("SoftPlatform", platformSpawn, Quaternion.identity);
+        attackObjects.Add(softPlatform);
 
         StartCoroutine(RandomizePlayerColor());
+
+        StartCoroutine(AttackWithCooldown(SpawnBoomerangs, 1.5f, 2));
 
         StartCoroutine(StopAttackAfterCooldown(10f));
     }
 
+    void SpawnBoomerangs()
+    {
+        if (attackObjects.Count >= 4)
+        {
+            return;
+        }
+
+        // Spawn un boomerang
+        float circleRadius = 6f;
+
+        float angle = UnityEngine.Random.Range(0, 360);
+        float x = spawnPoint.position.x + circleRadius * Mathf.Cos(angle);
+        float y = spawnPoint.position.y + circleRadius * Mathf.Sin(angle);
+
+        GameObject obj = ObjectPooler.instance.SpawnFromPool("Boomerang", new Vector2(x, y), Quaternion.identity);
+
+        attackObjects.Add(obj);
+    }
+
     void Attack4()
     {
-        Vector2 spawnPos = new Vector2(spawnPoint.position.x + 9, spawnPoint.position.y - 1.4f);
+        playerControls.ChangeState(1);
+
+        Vector2 spawnPos = new Vector2(spawnPoint.position.x, spawnPoint.position.y - 1.4f);
         ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
+
+        float timer = UnityEngine.Random.Range(1.2f, 1.55f);
+
+        StartCoroutine(AttackWithCooldown(SpawnPlatforms, timer, 0));
+    }
+
+    void SpawnPlatforms()
+    {
+        // Spawn la plateforme
+        float offset = UnityEngine.Random.Range(-0.8f, 0.12f);
+        Vector2 platformSpawn = new Vector2(spawnPoint.position.x + 8, spawnPoint.position.y + offset);
+
+        GameObject softPlatform = ObjectPooler.instance.SpawnFromPool("MovingPlatform", platformSpawn, Quaternion.identity);
+        
+        attackObjects.Add(softPlatform);
     }
 
     public void LaunchNextAttack()

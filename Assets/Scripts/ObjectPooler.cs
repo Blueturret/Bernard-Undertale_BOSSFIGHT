@@ -1,6 +1,4 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
@@ -19,6 +17,8 @@ public class ObjectPooler : MonoBehaviour
     public static ObjectPooler instance;
     private void Awake()
     {
+        if (instance != null) return;
+
         instance = this;
     }
     #endregion
