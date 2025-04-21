@@ -32,10 +32,10 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        //attacks.Add(Attack1);
+        attacks.Add(Attack1);
         //attacks.Add(Attack2);
         //attacks.Add(Attack3);
-        attacks.Add(Attack4);
+        //attacks.Add(Attack4);
     }
 
     void NullAttack() { } // Empty fonction to prevent error when 'attacks' list is empty
@@ -50,9 +50,9 @@ public class AttackManager : MonoBehaviour
 
         int projectileNumber = 300;//UnityEngine.Random.Range(4, 11);
 
-        StartCoroutine(AttackWithCooldown(SpawnProjectileInCircle, .8f, projectileNumber));
+        StartCoroutine(AttackWithCooldown(SpawnProjectileInCircle, .5f, projectileNumber));
 
-        StartCoroutine(StopAttackAfterCooldown(5));
+        StartCoroutine(StopAttackAfterCooldown(10));
     }
 
     void SpawnProjectileInCircle()
@@ -203,13 +203,6 @@ public class AttackManager : MonoBehaviour
 
         currentIteration += 1;
         StartCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
-    }
-
-    IEnumerator Delay(Action action, float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-        action.Invoke();
     }
 
     IEnumerator StopAttackAfterCooldown(float cooldown)

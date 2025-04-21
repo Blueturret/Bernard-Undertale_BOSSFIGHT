@@ -5965,22 +5965,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - tag: Obstacle
-    prefab: {fileID: 733459020448650495, guid: dfb3977b265a7ad4eaa92ab63b8c4070, type: 3}
+    prefab:
+    - {fileID: 6356044759994322477, guid: dafc060317a698e48b3c69780a6a54ad, type: 3}
+    - {fileID: 2655348954319502176, guid: f53871f53e3d932429d60f8ce3c26993, type: 3}
+    - {fileID: 5583060418256556081, guid: 228f2d58a2c012040989f5e1b79bd9e3, type: 3}
     size: 20
   - tag: ColoredObstacle
-    prefab: {fileID: 1964348324879643096, guid: 6098eb1252379e44b9010d3228a8014c, type: 3}
+    prefab:
+    - {fileID: 1964348324879643096, guid: 6098eb1252379e44b9010d3228a8014c, type: 3}
     size: 15
   - tag: Boomerang
-    prefab: {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
+    prefab:
+    - {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
     size: 3
   - tag: FloorIsLava
-    prefab: {fileID: 4833538303688685151, guid: 28dd48e4cd356764b8de741f1d155f66, type: 3}
+    prefab:
+    - {fileID: 4833538303688685151, guid: 28dd48e4cd356764b8de741f1d155f66, type: 3}
     size: 1
   - tag: SoftPlatform
-    prefab: {fileID: 7580704006419535207, guid: 9c5dccf8d6fce7d46aaac719d6859edc, type: 3}
+    prefab:
+    - {fileID: 7580704006419535207, guid: 9c5dccf8d6fce7d46aaac719d6859edc, type: 3}
     size: 1
   - tag: MovingPlatform
-    prefab: {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
+    prefab:
+    - {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
     size: 20
 --- !u!1 &1861922076
 GameObject:

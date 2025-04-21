@@ -2,16 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
-// Pour etre honnete, j'ai regarde la video de Brackeys sur l'Object Pooling ^^
+// Pour etre honnete, j'ai regarde la video de Brackeys sur l'Object Pooling et j'ai modifie quelques trucs ^^
 {
     // The class representing a pool for each object we want to spawn
     [System.Serializable]
     public class Pool
     {
         public string tag;
-        public GameObject prefab;
+        public List<GameObject> prefab;
         public int size;
     }
+
 
     #region Singleton
     public static ObjectPooler instance;
@@ -33,9 +34,12 @@ public class ObjectPooler : MonoBehaviour
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for(int i = 0; i < pool.size; i++)
+            for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                int index = Random.Range(0, pool.prefab.Count);
+                GameObject prefab = pool.prefab[index];
+
+                GameObject obj = Instantiate(prefab);
                 obj.SetActive(false);
                 obj.transform.parent = this.transform;
                 objectPool.Enqueue(obj);
@@ -54,6 +58,7 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning($"Pool with tag : {tag} doesn't exist!");
             return null;
         }
+
         GameObject toSpawn = poolDictionary[tag].Dequeue();
 
         // Enable pooled object

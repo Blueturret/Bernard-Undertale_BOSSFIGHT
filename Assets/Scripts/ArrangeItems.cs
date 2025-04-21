@@ -27,6 +27,7 @@ public class ArrangeItems : MonoBehaviour
     {
         noFoodText.SetActive(false);
         
+        // Associe a chaque item une position
         for(int i=0; i < transform.childCount - 1; i++)
         {
             itemList.Add(transform.GetChild(i).gameObject);
@@ -36,21 +37,30 @@ public class ArrangeItems : MonoBehaviour
 
     public void ConsumeItem(int healAmount)
     {
+        // Affiche un message si on a plus d'items
+        if (itemList.Count <= 0)
+        {
+            noFoodText.SetActive(true);
+            return;
+        }
+
         playerHealth.Heal(healAmount);
         
+        // Desactive l'item qu'on vient de selectionner
         GameObject button = EventSystem.current.currentSelectedGameObject;
-
         button.SetActive(false);
+
         itemList.Remove(button);
 
         ArrangeInventory();
-        if (itemList.Count <= 0) noFoodText.SetActive(true);
 
-        hud.Backwards();
+        // Lance l'attaque suivante
+        playerMenu.ChangeToGame();
     }
 
     void ArrangeInventory()
     {
+        // Rearrange les items restants
         for(int index=0; index < itemList.Count; index++)
         {
             itemList[index].transform.position = slotsList[index];
