@@ -205,6 +205,13 @@ public class AttackManager : MonoBehaviour
         StartCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
     }
 
+    IEnumerator Delay(Action action, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        action.Invoke();
+    }
+
     IEnumerator StopAttackAfterCooldown(float cooldown)
     // Arrete l'attaque apres une certaine duree
     {
