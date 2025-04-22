@@ -32,10 +32,10 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        attacks.Add(Attack1);
+        //attacks.Add(Attack1);
         //attacks.Add(Attack2);
-        //attacks.Add(Attack3);
-        //attacks.Add(Attack4);
+        attacks.Add(Attack3);
+        attacks.Add(Attack4);
     }
 
     void NullAttack() { } // Empty fonction to prevent error when 'attacks' list is empty
@@ -126,7 +126,7 @@ public class AttackManager : MonoBehaviour
     {
         playerControls.ChangeState(1);
 
-        Vector2 spawnPos = new Vector2(spawnPoint.position.x, spawnPoint.position.y - 1.4f);
+        Vector2 spawnPos = new Vector2(0, -2.5f);
         ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
 
         float timer = UnityEngine.Random.Range(1.2f, 1.55f);

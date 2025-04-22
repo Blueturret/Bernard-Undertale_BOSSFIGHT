@@ -17,16 +17,15 @@ public class Boomerang : Obstacle
     public override void OnObjectSpawned()
     {
         speed = 0;
-        maxVelocity = 74.999f; // Mathf.Pow(Vector2.Distance(playerPosition.position, transform.position), 2);
+        maxVelocity = 60; // Mathf.Pow(Vector2.Distance(playerPosition.position, transform.position), 2);
     }
 
     void FixedUpdate()
     {
         speed = Mathf.Lerp(0, maxVelocity, Time.deltaTime * 75);
-        print(speed);
 
         rb.AddForce((playerPosition.position - transform.position) * speed * Time.deltaTime);
-        rb.AddTorque(15);
+        rb.AddTorque(4);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

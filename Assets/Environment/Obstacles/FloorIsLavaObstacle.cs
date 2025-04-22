@@ -1,12 +1,11 @@
-using NUnit.Framework.Constraints;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 public class FloorIsLavaObstacle : Obstacle
 {
     PlayerHealth playerHealth;
 
     bool canDamage = true;
+    Vector2 startPos = new Vector2(0, -2.50f);
     
     protected override void Awake()
     {
@@ -16,12 +15,22 @@ public class FloorIsLavaObstacle : Obstacle
 
     public override void OnObjectSpawned()
     {
-        transform.position = new Vector2(transform.position.x + 15, -3.35f);
-
         canDamage = true;
         rb.linearVelocity = -Vector2.right * speed;
+    }
 
-        StartCoroutine(ResetPosition()); // !!! FONCTION TEMPORAIRE !!!
+    private void Start()
+    {
+        canDamage = true;
+        rb.linearVelocity = -Vector2.right * speed;
+    }
+
+    private void Update()
+    {
+        if (transform.position.x <= -11.5f)
+        {
+            transform.position = startPos;
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -47,18 +56,5 @@ public class FloorIsLavaObstacle : Obstacle
         yield return new WaitForSeconds(cooldown);
 
         canDamage = true;
-    }
-
-    IEnumerator ResetPosition()
-    // !!! FONCTION TEMPORAIRE !!!
-    {
-        if (gameObject.activeInHierarchy)
-        {
-            yield return new WaitForSeconds(4);
-
-            transform.position = new Vector2(transform.position.x + 15, -2.9f);
-
-            StartCoroutine(ResetPosition());
-        }
     }
 }

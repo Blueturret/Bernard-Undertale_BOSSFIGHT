@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: 6c8c143283ac0a141884569c1b2104c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6263043889993344610
+    second: FloorIsLave_0
+  - first:
+      213: 778900682285631843
+    second: FloorIsLave_1
+  - first:
+      213: 3099011754226847139
+    second: FloorIsLave_2
+  - first:
+      213: 3461488828603012743
+    second: FloorIsLave_3
+  - first:
+      213: -3406999455258703961
+    second: FloorIsLave_4
+  - first:
+      213: -3086129660045073111
+    second: FloorIsLave_5
+  - first:
+      213: -3982977214233796144
+    second: FloorIsLave_6
+  - first:
+      213: 337223924691197630
+    second: FloorIsLave_7
+  - first:
+      213: 4440263973000123279
+    second: FloorIsLave_8
+  - first:
+      213: -476872639257119579
+    second: FloorIsLave_9
+  - first:
+      213: -7927491714344117729
+    second: FloorIsLave_10
+  - first:
+      213: -2357124695813783541
+    second: FloorIsLave_11
+  - first:
+      213: 322791321753525122
+    second: FloorIsLave_12
+  - first:
+      213: 3573596165343192242
+    second: FloorIsLave_13
+  - first:
+      213: 3149562292625973790
+    second: FloorIsLave_14
+  - first:
+      213: -4262338448370293207
+    second: FloorIsLave_15
+  - first:
+      213: 6603030651492026300
+    second: FloorIsLave_16
+  - first:
+      213: -7131221168965482829
+    second: FloorIsLave_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FloorIsLave_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 480
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bba53d688ff7ec4384672a6a09aba58
+      internalID: 6263043889993344610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorIsLave_9
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 0
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e57fc28dde3d8884b803378a227ee6a4
+      internalID: -476872639257119579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4834a514e28917543b9ae9745382bc4b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FloorIsLave_0: 6263043889993344610
+      FloorIsLave_1: 778900682285631843
+      FloorIsLave_10: -7927491714344117729
+      FloorIsLave_11: -2357124695813783541
+      FloorIsLave_12: 322791321753525122
+      FloorIsLave_13: 3573596165343192242
+      FloorIsLave_14: 3149562292625973790
+      FloorIsLave_15: -4262338448370293207
+      FloorIsLave_16: 6603030651492026300
+      FloorIsLave_17: -7131221168965482829
+      FloorIsLave_2: 3099011754226847139
+      FloorIsLave_3: 3461488828603012743
+      FloorIsLave_4: -3406999455258703961
+      FloorIsLave_5: -3086129660045073111
+      FloorIsLave_6: -3982977214233796144
+      FloorIsLave_7: 337223924691197630
+      FloorIsLave_8: 4440263973000123279
+      FloorIsLave_9: -476872639257119579
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
