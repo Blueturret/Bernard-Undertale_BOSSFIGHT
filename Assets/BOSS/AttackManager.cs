@@ -32,13 +32,13 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        //attacks.Add(Attack1);
+        attacks.Add(Attack1);
         //attacks.Add(Attack2);
         attacks.Add(Attack3);
         attacks.Add(Attack4);
     }
 
-    void NullAttack() { } // Empty fonction to prevent error when 'attacks' list is empty
+    void NullAttack() { } // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
 
     void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
     {
@@ -89,6 +89,7 @@ public class AttackManager : MonoBehaviour
 
         attackObjects.Add(obj);
     }
+    
     void Attack3() // Boomerangs
     {
         // Spawn une plateforme au milieu de l'ecran
@@ -98,18 +99,13 @@ public class AttackManager : MonoBehaviour
 
         StartCoroutine(RandomizePlayerColor());
 
-        StartCoroutine(AttackWithCooldown(SpawnBoomerangs, 1.5f, 2));
+        StartCoroutine(AttackWithCooldown(SpawnBoomerangs, 1.5f, 3));
 
         StartCoroutine(StopAttackAfterCooldown(10f));
     }
 
     void SpawnBoomerangs()
     {
-        if (attackObjects.Count >= 4)
-        {
-            return;
-        }
-
         // Spawn un boomerang
         float circleRadius = 6f;
 
@@ -122,17 +118,20 @@ public class AttackManager : MonoBehaviour
         attackObjects.Add(obj);
     }
 
-    void Attack4()
+    void Attack4() // Phase de plateformes avec le sol qui fait des degats
     {
         playerControls.ChangeState(1);
 
         Vector2 spawnPos = new Vector2(0, -2.5f);
-        ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
+        GameObject obj = ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
+        attackObjects.Add(obj);
 
         float timer = UnityEngine.Random.Range(1.2f, 1.55f);
 
         StartCoroutine(AttackWithCooldown(SpawnPlatforms, timer, 0));
-    }
+
+        StartCoroutine(StopAttackAfterCooldown(15));
+    } 
 
     void SpawnPlatforms()
     {
@@ -195,14 +194,13 @@ public class AttackManager : MonoBehaviour
     {
         if (iterations != 0 && currentIteration >= iterations)
         {
-            StopCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
+            yield break;
         }
         action.Invoke();
 
         yield return new WaitForSeconds(cooldown);
 
-        currentIteration += 1;
-        StartCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration));
+        StartCoroutine(AttackWithCooldown(action, cooldown, iterations, currentIteration + 1));
     }
 
     IEnumerator StopAttackAfterCooldown(float cooldown)

@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5542004390212294957}
   - component: {fileID: 4554365519714838197}
   - component: {fileID: 4302046970521706953}
+  - component: {fileID: 5001822903697517352}
   m_Layer: 0
   m_Name: FloorIsLava
   m_TagString: Untagged
@@ -210,6 +211,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 9.329235, y: 0.3332578}
   m_EdgeRadius: 0
+--- !u!111 &5001822903697517352
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833538303688685151}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 77f24c3e9eab87a469abe6bcce45490f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 77f24c3e9eab87a469abe6bcce45490f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &6010991905281861511
 GameObject:
   m_ObjectHideFlags: 0

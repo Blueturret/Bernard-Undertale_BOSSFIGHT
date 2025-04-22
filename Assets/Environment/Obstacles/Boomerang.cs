@@ -1,3 +1,5 @@
+using NUnit.Framework.Constraints;
+using System.Collections;
 using UnityEngine;
 
 public class Boomerang : Obstacle
@@ -32,6 +34,7 @@ public class Boomerang : Obstacle
     // Infliger des dégâts, ou repousser les boomerangs quand ils se touchent
     {
         base.OnTriggerEnter2D(collision);
+        
         if (collision.CompareTag("Boomerang"))
         {
             rb.AddForce((transform.position - collision.transform.position) * repelForce);

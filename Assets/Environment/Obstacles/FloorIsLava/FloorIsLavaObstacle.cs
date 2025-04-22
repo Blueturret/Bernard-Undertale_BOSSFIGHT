@@ -17,6 +17,8 @@ public class FloorIsLavaObstacle : Obstacle
     {
         canDamage = true;
         rb.linearVelocity = -Vector2.right * speed;
+
+        GetComponent<Animation>().Play();
     }
 
     private void Start()
