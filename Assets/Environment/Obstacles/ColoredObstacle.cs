@@ -17,6 +17,7 @@ public class ColoredObstacle : Obstacle
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Detection de la velocite du joueur
             Vector2 playerVelocity = collision.GetComponent<Rigidbody2D>().linearVelocity;
 
             if (isOrange == 1 && playerVelocity.magnitude != 0)

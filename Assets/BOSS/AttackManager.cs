@@ -32,10 +32,11 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        attacks.Add(Attack1);
+        //attacks.Add(Attack1);
         //attacks.Add(Attack2);
-        attacks.Add(Attack3);
-        attacks.Add(Attack4);
+        //attacks.Add(Attack3);
+        //attacks.Add(Attack4);
+        attacks.Add(Attack5);
     }
 
     void NullAttack() { } // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
@@ -142,6 +143,15 @@ public class AttackManager : MonoBehaviour
         GameObject softPlatform = ObjectPooler.instance.SpawnFromPool("MovingPlatform", platformSpawn, Quaternion.identity);
         
         attackObjects.Add(softPlatform);
+    }
+
+    void Attack5() // Bernard met un coup de baton
+    // Cette attaque est majoritairement geree par des animations events et d'autres scripts, on se contente juste
+    // de lancer l'animation dans cette fonction
+    {
+        transform.GetChild(0).GetComponent<Animator>().SetTrigger("mustSwing");
+
+        StartCoroutine(StopAttackAfterCooldown(3f));
     }
 
     public void LaunchNextAttack()
