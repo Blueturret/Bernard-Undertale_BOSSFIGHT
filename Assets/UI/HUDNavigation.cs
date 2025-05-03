@@ -1,26 +1,34 @@
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class HUDNavigation : MonoBehaviour
     // Toutes les fonctions pour les boutons FIGHT, ACT, ITEM & MERCY
 {
     Button currentButton;
     CanvasGroup HUDGroup;
     
     [SerializeField] GameObject fightMenu;
+    Button fightButton;
     bool isInFight;
     [SerializeField] GameObject actMenu;
+    Button actButton;
     bool isInAct;
     [SerializeField] GameObject itemMenu;
+    Button itemButton;
     bool isInItems;
     [SerializeField] GameObject mercyMenu;
+    Button mercyButton;
     bool isInMercy;
 
     public void Awake()
     {
         currentButton = transform.GetChild(0).GetComponent<Button>();
         HUDGroup = GetComponent<CanvasGroup>();
+
+        fightButton = transform.GetChild(0).GetComponent<Button>();
+        actButton = transform.GetChild(1).GetComponent<Button>();
+        itemButton = transform.GetChild(2).GetComponent<Button>();
+        mercyButton = transform.GetChild(3).GetComponent<Button>();
     }
 
     public void Backwards()
@@ -45,7 +53,7 @@ public class HUD : MonoBehaviour
         firstButton.Select();
 
         // Stocke le dernier bouton selectionne pour pas retourner systematiquement sur FIGHT quand tu quittes le menu
-        currentButton = transform.GetChild(0).GetComponent<Button>();
+        currentButton = fightButton;
 
         isInFight = true;
     }
@@ -57,7 +65,7 @@ public class HUD : MonoBehaviour
         Button firstButton = actMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
 
-        currentButton = transform.GetChild(1).GetComponent<Button>();
+        currentButton = actButton;
 
         isInAct = true;
     }
@@ -79,7 +87,7 @@ public class HUD : MonoBehaviour
 
         if(firstButton != null) firstButton.Select();
 
-        currentButton = transform.GetChild(2).GetComponent<Button>();
+        currentButton = itemButton;
 
         isInItems = true;
     }
@@ -91,7 +99,7 @@ public class HUD : MonoBehaviour
         Button firstButton = mercyMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
 
-        currentButton = transform.GetChild(3).GetComponent<Button>();
+        currentButton = mercyButton;
 
         isInMercy = true;
     }

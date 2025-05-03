@@ -7,8 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
 
-    float health;
-    float maxHealth = 92;
+    float health; // C'est un float pour que la division par maxHealth fonctionne
+    int maxHealth = 92;
 
     private void Start()
     {
@@ -37,8 +37,5 @@ public class PlayerHealth : MonoBehaviour
         // Change UI
         healthBar.fillAmount = health / maxHealth;
         healthText.text = health.ToString() + " / " + maxHealth.ToString();
-
-        // Delete consumed object
-        
     }
 }

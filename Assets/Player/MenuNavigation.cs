@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuNavigation : MonoBehaviour
 {
     InputActionAsset playerInput;
-    HUD hud;
+    HUDNavigation hud;
     
     GameObject playerSprite;
     Collider2D playerCollision;
@@ -26,7 +26,7 @@ public class MenuNavigation : MonoBehaviour
     {
         playerInput = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
 
-        hud = GameObject.Find("HUD").GetComponent<HUD>();
+        hud = GameObject.Find("HUD").GetComponent<HUDNavigation>();
 
         playerSprite = this.transform.GetChild(0).gameObject;
         playerCollision = this.GetComponent<BoxCollider2D>();
