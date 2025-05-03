@@ -29,7 +29,6 @@ public class CharacterControls : MonoBehaviour
     float defaultX;
     float defaultY;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +47,7 @@ public class CharacterControls : MonoBehaviour
         }
         else
         {
-            rb.linearVelocityX = horizontalInput* speed * Time.deltaTime;
+            rb.linearVelocityX = horizontalInput * speed * Time.deltaTime;
         }
     }
 
@@ -96,7 +95,8 @@ public class CharacterControls : MonoBehaviour
         }
 
         if (context.canceled)
-        // Au plus on maintient la touche, au plus on saute haut. Si on arrete prematurement de presser le touche, on diminue la force du saut
+        // Au plus on maintient la touche, au plus on saute haut.
+        // Si on arrete prematurement de presser le touche, on diminue la force du saut
         {
             if(rb.linearVelocity.y > 0)
             {
