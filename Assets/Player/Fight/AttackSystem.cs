@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,25 +12,22 @@ public class AttackSystem : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] GameObject damageBar;
+    Animator damageBarAnim;
     [SerializeField] GameObject damageMarker;
+    DamageMarker markerScript;
 
-    Rigidbody2D markerRb;
-    Vector2 markerDefaultPos = new Vector2(-5.7f, -1.608f);
-
-    [Header("Properties")]
-    [SerializeField] float speed;
-    [SerializeField] int minDamage;
-    [SerializeField] int maxDamage;
+    
     float bossHealth; // C'est un float pour que la division par maxBossHealth fonctionne
 
     private void Awake()
     {
-        markerRb = damageMarker.GetComponent<Rigidbody2D>();
-
         playerMenu = GetComponent<MenuNavigation>();
+
+        markerScript = damageMarker.GetComponent<DamageMarker>();
 
         attackManager = GameObject.Find("BOSS").GetComponent<AttackManager>();
         healthbarDisplay = GameObject.Find("BOSS Infos").GetComponent<HandleHealthbarDisplay>();
+        damageBarAnim = damageBar.GetComponent<Animator>();
     }
 
     private void Start()
@@ -46,26 +44,19 @@ public class AttackSystem : MonoBehaviour
         // Activer et animer la barre de charge et le marker
         damageBar.SetActive(true);
         damageMarker.SetActive(true);
-        damageMarker.transform.position = markerDefaultPos;
-        markerRb.linearVelocityX = speed;
     }
 
     public void Hit(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && !playerMenu.isInGame)
         {
-            Attack();
-
-            // Lance la prochaine attaque
-            playerMenu.ChangeToGame();
-            attackManager.LaunchNextAttack();
+            int dmg = markerScript.CalculateDamage();
+            Attack(dmg);
         }
     }
 
-    void Attack()
+    void Attack(int dmg)
     {
-        int dmg = Random.Range(minDamage, maxDamage + 1);
-
         // Gestion des degats
         bossHealth -= dmg;
         if (bossHealth <= 0) Debug.Log("Da boss is ded!!");
@@ -74,7 +65,29 @@ public class AttackSystem : MonoBehaviour
         float new_amount = bossHealth / boss.maxHealth;
 
         healthbarDisplay.DisplayHealthbar(new_amount, dmg);
-        damageBar.SetActive(false);
+        StartCoroutine(AnimateDamageBar());
         damageMarker.SetActive(false);
+
+        // Lance la prochaine attaque
+        playerMenu.ChangeToGame();
+        attackManager.LaunchNextAttack();
+    }
+
+    public void CancelAttack()
+    {
+        Attack(0);
+    }
+
+    IEnumerator AnimateDamageBar()
+    {
+        damageBarAnim.SetTrigger("Fade");
+
+        yield return null;
+
+        AnimatorClipInfo current = damageBarAnim.GetCurrentAnimatorClipInfo(0)[0];
+
+        yield return new WaitForSeconds(current.clip.length - Time.deltaTime);
+
+        damageBar.SetActive(false);
     }
 }

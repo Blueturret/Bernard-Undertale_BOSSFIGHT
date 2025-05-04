@@ -26,7 +26,7 @@ public class HandleHealthbarDisplay : MonoBehaviour
         damageText.text = dmg.ToString();
         damageTextAnim.Play();
 
-        StartCoroutine(DisplayCooldown(3));
+        StartCoroutine(DisplayCooldown(2));
     }
 
     IEnumerator DisplayCooldown(float cooldown)

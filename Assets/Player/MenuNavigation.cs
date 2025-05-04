@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class MenuNavigation : MonoBehaviour
 {
     HUDNavigation hud;
-    
+
     GameObject playerSprite;
     Collider2D playerCollision;
     Transform defaultPlayerPosition;
-    bool isInGame = true;
+    public bool isInGame {get; private set;}
 
-        [Header("Menu Navigation")]
+    [Header("Menu Navigation")]
     [SerializeField] Button fightButton;
 
     // Attack Manager
@@ -33,6 +33,7 @@ public class MenuNavigation : MonoBehaviour
 
     private void Start()
     {
+        isInGame = true;
         StartCoroutine(LateStart());
 
         // Ajoute la fonction pour lancer la prochaine attaque dans l'event OnChangeToGame
