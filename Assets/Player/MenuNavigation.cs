@@ -1,13 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 public class MenuNavigation : MonoBehaviour
 {
-    InputActionAsset playerInput;
     HUDNavigation hud;
     
     GameObject playerSprite;
@@ -24,8 +22,6 @@ public class MenuNavigation : MonoBehaviour
 
     private void Awake()
     {
-        playerInput = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
-
         hud = GameObject.Find("HUD").GetComponent<HUDNavigation>();
 
         playerSprite = this.transform.GetChild(0).gameObject;
@@ -37,17 +33,19 @@ public class MenuNavigation : MonoBehaviour
 
     private void Start()
     {
-        ChangeToMenu();
+        StartCoroutine(LateStart());
 
-        OnChangeToGame += attackManager.LaunchNextAttack; // Ajoute la fonction pour lancer la prochaine attaque dans l'event OnChangeToGame
+        // Ajoute la fonction pour lancer la prochaine attaque dans l'event OnChangeToGame
+        OnChangeToGame += attackManager.LaunchNextAttack;
     }
 
     public void ChangeToMenu()
     // Fonction pour passer du gameplay au menu
     {
-        //if (isInGame)
-        //{
-            playerInput.FindActionMap("UI").Enable();
+        if(isInGame)
+        {
+            GameManager.playerInput.FindActionMap("UI").Enable();
+            GameManager.playerInput.FindActionMap("Player").Disable();
 
             playerSprite.SetActive(false);
             playerCollision.enabled = false;
@@ -55,7 +53,7 @@ public class MenuNavigation : MonoBehaviour
             fightButton.Select(); // Selectionne le bouton FIGHT par defaut
 
             isInGame = false;
-        //}
+        }
     }
 
     public void ChangeToGame()
@@ -64,8 +62,9 @@ public class MenuNavigation : MonoBehaviour
         if (!isInGame)
         {
             hud.Backwards();
-            
-            playerInput.FindActionMap("UI").Disable();
+
+            GameManager.playerInput.FindActionMap("UI").Disable();
+            GameManager.playerInput.FindActionMap("Player").Enable();
 
             playerCollision.enabled = true;
             playerSprite.SetActive(true);
@@ -77,5 +76,13 @@ public class MenuNavigation : MonoBehaviour
 
             OnChangeToGame.Invoke(); // Lance l'attaque suivante quand on finit notre tour
         }
+    }
+
+    IEnumerator LateStart()
+    // Si on desactive des ActionMap dans Start ou Awake, ca fonctionne pas, il faut un delai (merci le brozers  Unity)
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        ChangeToMenu();
     }
 }

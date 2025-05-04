@@ -1,20 +1,20 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 
-public class DamageMarker : MonoBehaviour
+public class AttackSystem : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Vector2 defaultPos = new Vector2(-5.7f, -1.608f);
+    MenuNavigation playerMenu;
 
     BossObject boss = new BossObject();
     AttackManager attackManager;
     HandleHealthbarDisplay healthbarDisplay;
-    MenuNavigation playerMenu;
 
     [Header("UI Elements")]
     [SerializeField] GameObject damageBar;
+    [SerializeField] GameObject damageMarker;
+
+    Rigidbody2D markerRb;
+    Vector2 markerDefaultPos = new Vector2(-5.7f, -1.608f);
 
     [Header("Properties")]
     [SerializeField] float speed;
@@ -24,10 +24,11 @@ public class DamageMarker : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        markerRb = damageMarker.GetComponent<Rigidbody2D>();
+
+        playerMenu = GetComponent<MenuNavigation>();
 
         attackManager = GameObject.Find("BOSS").GetComponent<AttackManager>();
-        playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
         healthbarDisplay = GameObject.Find("BOSS Infos").GetComponent<HandleHealthbarDisplay>();
     }
 
@@ -36,10 +37,17 @@ public class DamageMarker : MonoBehaviour
         bossHealth = boss.maxHealth;
     }
 
-    private void OnEnable()
+    public void StartAttack()
     {
-        transform.position = defaultPos;
-        //rb.linearVelocityX = speed;
+        // Gestion des action maps
+        GameManager.playerInput.FindActionMap("UI").Disable();
+        GameManager.playerInput.FindActionMap("Player").Enable();
+
+        // Activer et animer la barre de charge et le marker
+        damageBar.SetActive(true);
+        damageMarker.SetActive(true);
+        damageMarker.transform.position = markerDefaultPos;
+        markerRb.linearVelocityX = speed;
     }
 
     public void Hit(InputAction.CallbackContext context)
@@ -49,12 +57,12 @@ public class DamageMarker : MonoBehaviour
             Attack();
 
             // Lance la prochaine attaque
-            attackManager.LaunchNextAttack();
             playerMenu.ChangeToGame();
+            attackManager.LaunchNextAttack();
         }
     }
 
-    public void Attack()
+    void Attack()
     {
         int dmg = Random.Range(minDamage, maxDamage + 1);
 
@@ -67,6 +75,6 @@ public class DamageMarker : MonoBehaviour
 
         healthbarDisplay.DisplayHealthbar(new_amount, dmg);
         damageBar.SetActive(false);
-        gameObject.SetActive(false);
+        damageMarker.SetActive(false);
     }
 }

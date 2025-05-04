@@ -1673,6 +1673,7 @@ GameObject:
   - component: {fileID: 244754134}
   - component: {fileID: 244754133}
   - component: {fileID: 244754132}
+  - component: {fileID: 244754137}
   - component: {fileID: 244754135}
   - component: {fileID: 244754136}
   m_Layer: 0
@@ -1851,9 +1852,21 @@ MonoBehaviour:
     m_ActionId: f01742fe-bf54-46c4-996a-8d058054d34c
     m_ActionName: 'Player/Crouch[/Keyboard/ctrl]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 198a6417-4ed1-421b-83e3-2b9734bd9618
-    m_ActionName: 'DamageBar/Hit[/Keyboard/w]'
+      m_Calls:
+      - m_Target: {fileID: 244754137}
+        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
+        m_MethodName: Hit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c9105529-f659-4063-ac08-b9d5047a02b2
+    m_ActionName: 'Player/Attack[/Keyboard/w]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1932,6 +1945,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 654503833}
   healthText: {fileID: 193375535}
+--- !u!114 &244754137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244754129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c716ac63eec7f43903a3e1f8862ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageBar: {fileID: 1669359804}
+  damageMarker: {fileID: 1109645096}
+  speed: 5
+  minDamage: 23
+  maxDamage: 42
 --- !u!1 &245436884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,9 +2197,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 796355136}
-        m_TargetAssemblyTypeName: FightMenuBehavior, Assembly-CSharp
-        m_MethodName: LaunchAttack
+      - m_Target: {fileID: 244754137}
+        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
+        m_MethodName: StartAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3608,8 +3638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ae4b9de61fe2247a9af6760023a77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBar: {fileID: 1669359804}
-  damageMarker: {fileID: 1109645096}
 --- !u!1 &807314683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,8 +4307,6 @@ GameObject:
   - component: {fileID: 1109645098}
   - component: {fileID: 1109645100}
   - component: {fileID: 1109645097}
-  - component: {fileID: 1109645099}
-  - component: {fileID: 1109645101}
   m_Layer: 0
   m_Name: Damage Marker
   m_TagString: Untagged
@@ -4358,22 +4384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 738618436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1109645099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109645096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c716ac63eec7f43903a3e1f8862ff7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageBar: {fileID: 1669359804}
-  speed: 5
-  minDamage: 23
-  maxDamage: 42
 --- !u!50 &1109645100
 Rigidbody2D:
   serializedVersion: 5
@@ -4401,84 +4411,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1109645101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109645096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
-    m_ActionName: 'Player/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
-    m_ActionName: 'Player/Jump[/Keyboard/upArrow,/Keyboard/w]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f01742fe-bf54-46c4-996a-8d058054d34c
-    m_ActionName: 'Player/Crouch[/Keyboard/insert]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
-    m_ActionName: 'UI/Navigate[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
-    m_ActionName: 'UI/Submit[/Keyboard/w]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 15cef263-9014-4fd5-94d9-4e4a6234a6ef
-    m_ActionName: 'UI/Cancel[/Keyboard/x]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 32b35790-4ed0-4e9a-aa41-69ac6d629449
-    m_ActionName: 'UI/Point[/Mouse/position,/Pen/position]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
-    m_ActionName: 'UI/Click[/Mouse/leftButton,/Pen/tip]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1109645099}
-        m_TargetAssemblyTypeName: DamageMarker, Assembly-CSharp
-        m_MethodName: Hit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 198a6417-4ed1-421b-83e3-2b9734bd9618
-    m_ActionName: 'DamageBar/Hit[/Keyboard/w]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: DamageBar
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1149805616
 GameObject:
   m_ObjectHideFlags: 0
