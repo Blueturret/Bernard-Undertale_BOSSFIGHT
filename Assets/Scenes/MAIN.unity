@@ -6934,10 +6934,10 @@ MonoBehaviour:
     prefab:
     - {fileID: 7580704006419535207, guid: 0692409b42d28d14a91e2283926abd51, type: 3}
     size: 1
-  - tag: MovingPlatform
+  - tag: MovingPlatformSequence
     prefab:
-    - {fileID: 7580704006419535207, guid: 556764e27bbf3f043b25612bdfb39e24, type: 3}
-    size: 20
+    - {fileID: 4172264950940450601, guid: 0e30a8797185be34b8fdb8d80c8e277d, type: 3}
+    size: 1
 --- !u!1 &1861922076
 GameObject:
   m_ObjectHideFlags: 0

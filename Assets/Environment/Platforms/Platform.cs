@@ -1,24 +1,18 @@
 using UnityEngine;
 
-public class Platform : MonoBehaviour, IPooledObject
+public class Platform : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    float minSpeed = 1.2f;
-    float maxSpeed = 1.5f;
-    public bool isMovable = true;
+    [SerializeField] float speed = 1.2f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void OnObjectSpawned()
+    public void Start()
     {
-        if (!isMovable) return;
-
-        float speed = Random.Range(minSpeed, maxSpeed + 1);
-
         rb.linearVelocity = -Vector2.right * speed;
     }
 }

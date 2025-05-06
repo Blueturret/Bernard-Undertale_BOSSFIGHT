@@ -35,11 +35,11 @@ public class AttackManager : MonoBehaviour
         //attacks.Add(Attack1);
         //attacks.Add(Attack2);
         //attacks.Add(Attack3);
-        //attacks.Add(Attack4);
-        attacks.Add(Attack5);
+        attacks.Add(Attack4);
+        //attacks.Add(Attack5);
     }
 
-    void NullAttack() { } // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
+    void NullAttack() {} // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
 
     void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
     {
@@ -124,14 +124,12 @@ public class AttackManager : MonoBehaviour
         playerControls.ChangeState(1);
 
         Vector2 spawnPos = new Vector2(0, -2.5f);
-        GameObject obj = ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
-        attackObjects.Add(obj);
+        GameObject floor = ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
+        GameObject movingPlatforms = ObjectPooler.instance.SpawnFromPool("MovingPlatformSequence", Vector3.zero, Quaternion.identity);
+        attackObjects.Add(floor);
+        attackObjects.Add(movingPlatforms);
 
-        float timer = UnityEngine.Random.Range(1.2f, 1.55f);
-
-        StartCoroutine(AttackWithCooldown(SpawnPlatforms, timer, 0));
-
-        StartCoroutine(StopAttackAfterCooldown(15));
+        StartCoroutine(StopAttackAfterCooldown(17));
     } 
 
     void SpawnPlatforms()
