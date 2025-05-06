@@ -16,23 +16,26 @@ public class CharacterControls : MonoBehaviour
 
     bool wantsToJump = false;
     bool canJump = true;
-    bool isBlue = false;
 
-
-    [Header("GroundCheck")]
+        [Header("GroundCheck")]
     float coyoteTime = .12f;
     float coyoteTimeCounter;
     Transform groundCheck;  
     [SerializeField] LayerMask groundMask;
 
-
+    // Crouch
     float defaultX;
     float defaultY;
+
+    // ColorChange
+    bool isBlue = false;
+    Animation colorFlickerAnim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        groundCheck = transform.GetChild(1).transform;
+        colorFlickerAnim = GetComponent<Animation>(); 
+        groundCheck = transform.GetChild(2).transform;
 
         defaultX = transform.localScale.x;
         defaultY = transform.localScale.y;
@@ -82,7 +85,7 @@ public class CharacterControls : MonoBehaviour
     bool isGrounded()
     // GroundCheck
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundMask);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.15f, groundMask);
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -119,9 +122,19 @@ public class CharacterControls : MonoBehaviour
     }
 
     // Handling heart color
-    public void ChangeState(int stateIndex)
-    // Fonction pour alterner entre coeur bleu et coeur rouge
-    {
+    public IEnumerator ChangeState(int stateIndex, bool playAnim)
+    // Coroutine pour alterner entre coeur bleu et coeur rouge
+    // Le deuxieme parametre controle si oui ou non on veut jouer une animation de telegraphing, 'false' change
+    // la couleur instantanement
+    {   
+        if(playAnim)
+        {
+            colorFlickerAnim.Play();
+
+            yield return new WaitUntil(() => !colorFlickerAnim.isPlaying);
+            yield return new WaitForSeconds(0.3f);
+        }
+        
         switch (stateIndex)
         {
             case 0:

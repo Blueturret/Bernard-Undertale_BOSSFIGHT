@@ -32,17 +32,20 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        //attacks.Add(Attack1);
-        //attacks.Add(Attack2);
-        //attacks.Add(Attack3);
+        attacks.Add(Attack1);
+        attacks.Add(Attack2);
+        attacks.Add(Attack3);
         attacks.Add(Attack4);
-        //attacks.Add(Attack5);
+        attacks.Add(Attack5);
     }
 
     void NullAttack() {} // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
 
     void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
     {
+        // Etat du coeur par defaut
+        StartCoroutine(playerControls.ChangeState(0, false));
+
         isAttacking = true;
 
         borderAnimator.SetBool("isSmol", true);
@@ -74,6 +77,9 @@ public class AttackManager : MonoBehaviour
 
     void Attack2() // Obstacles bleus et oranges qui vont de droite a gauche
     {
+        // Etat du coeur par defaut
+        StartCoroutine(playerControls.ChangeState(0, false));
+
         isAttacking = true;
 
         // Logique de l'attaque 2
@@ -93,6 +99,11 @@ public class AttackManager : MonoBehaviour
     
     void Attack3() // Boomerangs
     {
+        // Etat du coeur par defaut
+        StartCoroutine(playerControls.ChangeState(0, false));
+
+        isAttacking = true;
+
         // Spawn une plateforme au milieu de l'ecran
         Vector2 platformSpawn = new Vector2(spawnPoint.position.x, spawnPoint.position.y - .3f);
         GameObject softPlatform = ObjectPooler.instance.SpawnFromPool("SoftPlatform", platformSpawn, Quaternion.identity);
@@ -121,7 +132,10 @@ public class AttackManager : MonoBehaviour
 
     void Attack4() // Phase de plateformes avec le sol qui fait des degats
     {
-        playerControls.ChangeState(1);
+        // Etat du coeur par defaut
+        StartCoroutine(playerControls.ChangeState(1, false));
+
+        isAttacking = true;
 
         Vector2 spawnPos = new Vector2(0, -2.5f);
         GameObject floor = ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
@@ -132,21 +146,13 @@ public class AttackManager : MonoBehaviour
         StartCoroutine(StopAttackAfterCooldown(17));
     } 
 
-    void SpawnPlatforms()
-    {
-        // Spawn la plateforme
-        float offset = UnityEngine.Random.Range(-0.8f, 0.12f);
-        Vector2 platformSpawn = new Vector2(spawnPoint.position.x + 8, spawnPoint.position.y + offset);
-
-        GameObject softPlatform = ObjectPooler.instance.SpawnFromPool("MovingPlatform", platformSpawn, Quaternion.identity);
-        
-        attackObjects.Add(softPlatform);
-    }
-
     void Attack5() // Bernard met un coup de baton
     // Cette attaque est majoritairement geree par des animations events et d'autres scripts, on se contente juste
     // de lancer l'animation dans cette fonction
     {
+        // Etat du coeur par defaut
+        StartCoroutine(playerControls.ChangeState(0, false));
+
         transform.GetChild(0).GetComponent<Animator>().SetTrigger("mustSwing");
 
         StartCoroutine(StopAttackAfterCooldown(3f));
@@ -191,7 +197,7 @@ public class AttackManager : MonoBehaviour
 
         yield return new WaitForSeconds(cooldown);
 
-        playerControls.ChangeState(newColor);
+        StartCoroutine(playerControls.ChangeState(newColor, true));
 
         StartCoroutine(RandomizePlayerColor());
     }
