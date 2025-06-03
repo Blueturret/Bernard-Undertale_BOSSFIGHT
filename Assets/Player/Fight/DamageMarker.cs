@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class DamageMarker : MonoBehaviour
+// Gestion du 'viseur' quand on attaque
 {
     Rigidbody2D markerRb;
     Vector2 markerDefaultPos = new Vector2(-5.7f, -1.608f);
@@ -27,6 +28,7 @@ public class DamageMarker : MonoBehaviour
     }
 
     public int CalculateDamage()
+    // Calcule les degats en fonction de la distance par rapport au centre
     {
         float dist = Vector2.Distance(Vector2.zero, new Vector2(transform.position.x, 0));
 
@@ -48,10 +50,11 @@ public class DamageMarker : MonoBehaviour
     }
 
     private void FixedUpdate()
+    // Annule l'attaque si on appuye pas a temps
     {
         if (transform.position.x >= 5.8f)
         {
-            attackSystem.CancelAttack();
+            attackSystem.Attack(0);
         }
     }
 }

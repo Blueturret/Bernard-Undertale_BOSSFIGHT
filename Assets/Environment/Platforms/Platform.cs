@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Platform : MonoBehaviour
+// Gestion des soft platforms
 {
     Rigidbody2D rb;
 

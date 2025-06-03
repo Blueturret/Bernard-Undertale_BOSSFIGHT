@@ -32,14 +32,14 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        attacks.Add(Attack1);
-        attacks.Add(Attack2);
-        attacks.Add(Attack3);
-        attacks.Add(Attack4);
+        //attacks.Add(Attack1);
+        //attacks.Add(Attack2);
+        //attacks.Add(Attack3);
+        //attacks.Add(Attack4);
         attacks.Add(Attack5);
     }
 
-    void NullAttack() {} // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
+    void NullAttack() { StopCurrentAttack(); } // Fonction vide pour empêcher d'avoir des erreurs quand la liste 'attacks' est vide
 
     void Attack1() // Projectiles qui apparaissent en cercle et foncent vers le joueur
     {

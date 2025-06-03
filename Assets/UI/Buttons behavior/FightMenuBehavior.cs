@@ -1,11 +1,12 @@
 using UnityEngine;
 
 public class FightMenuBehavior : MonoBehaviour
+// CE SCRIPT NE FAIT RIEN (pour le moment)
 {
-    AttackSystem playerAttack;
+    MenuNavigation playerMenu;
 
-    public void LaunchAttack()
+    private void Awake()
     {
-        //
+        playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
     }
 }

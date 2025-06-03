@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class Obstacle : MonoBehaviour, IPooledObject
-    // Classe mere pour tous les obstacles
+// Classe mere pour tous les obstacles
 {
     protected List<GameObject> attackObjects;
     protected Rigidbody2D rb;
@@ -21,7 +21,7 @@ public class Obstacle : MonoBehaviour, IPooledObject
     public virtual void OnObjectSpawned() { }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
-    // Gestion des degats
+    // Gestion des degats par defaut
     {
         if (collision.gameObject.CompareTag("Player"))
         {

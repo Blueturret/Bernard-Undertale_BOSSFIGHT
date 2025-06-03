@@ -1,15 +1,16 @@
 using UnityEngine;
 
 public class Swing : MonoBehaviour
-// Je sais que je repete en grande partie le script de ColoredObstacle mais j'ai vraiment pas besoin
-// d'heriter de la class Obstacle a vrai dire ca causerait plus de problemes qu'autre chose,
-// je me demande s'il y aurait pas une meilleure maniere de le faire
+// Je repete en grande partie le script de ColoredObstacle mais j'ai pas besoin
+// d'heriter de la class mere Obstacle, ca causerait trop de problemes,
+// je me demande s'il y a pas une meilleure maniere de le faire
 {
     public int isOrange; // Cette variable sera assignee des l'apparition de l'objet
     float damage = 45;
 
     private void Start()
     {
+        // Donne la bonne couleur au swing
         switch (isOrange)
         {
             case 0:
@@ -22,6 +23,7 @@ public class Swing : MonoBehaviour
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
+    // Gestion des degats
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -41,6 +43,7 @@ public class Swing : MonoBehaviour
     }
 
     public void Destroy()
+    // Methode appelee par un animation event
     {
         Destroy(this.gameObject);
     }

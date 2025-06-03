@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Stocke les inputs du joueur globalement pour pouvoir desactiver/activer des Action Map plus facilement
     public static InputActionAsset playerInput { get; private set; }
 
     private void Awake()

@@ -16,6 +16,7 @@ public class HandleHealthbarDisplay : MonoBehaviour
     }
 
     public void DisplayHealthbar(float fillAmount, int dmg)
+    // Fonction pour afficher et animer la barre de vie du boss
     {
         // Gestion de la barre de vie
         bossHealthbar.transform.parent.gameObject.SetActive(true);
@@ -30,6 +31,7 @@ public class HandleHealthbarDisplay : MonoBehaviour
     }
 
     IEnumerator DisplayCooldown(float cooldown)
+    // Desactive la barre de vie apres n secondes
     {
         yield return new WaitForSeconds(cooldown);
 

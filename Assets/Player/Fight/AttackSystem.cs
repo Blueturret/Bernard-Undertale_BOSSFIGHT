@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class AttackSystem : MonoBehaviour
+// Gestion de l'attaque du boss
 {
     MenuNavigation playerMenu;
 
     BossObject boss = new BossObject();
-    AttackManager attackManager;
     HandleHealthbarDisplay healthbarDisplay;
 
     [Header("UI Elements")]
@@ -25,7 +25,6 @@ public class AttackSystem : MonoBehaviour
 
         markerScript = damageMarker.GetComponent<DamageMarker>();
 
-        attackManager = GameObject.Find("BOSS").GetComponent<AttackManager>();
         healthbarDisplay = GameObject.Find("BOSS Infos").GetComponent<HandleHealthbarDisplay>();
         damageBarAnim = damageBar.GetComponent<Animator>();
     }
@@ -36,17 +35,19 @@ public class AttackSystem : MonoBehaviour
     }
 
     public void StartAttack()
+    // Demarre une attaque
     {
         // Gestion des action maps
         GameManager.playerInput.FindActionMap("UI").Disable();
         GameManager.playerInput.FindActionMap("Player").Enable();
 
-        // Activer et animer la barre de charge et le marker
+        // Activer la barre de charge et le marker
         damageBar.SetActive(true);
         damageMarker.SetActive(true);
     }
 
     public void Hit(InputAction.CallbackContext context)
+    // Attaque le boss
     {
         if(context.performed && !playerMenu.isInGame)
         {
@@ -55,7 +56,8 @@ public class AttackSystem : MonoBehaviour
         }
     }
 
-    void Attack(int dmg)
+    public void Attack(int dmg)
+    // Gestion des degats infliges au boss
     {
         // Gestion des degats
         bossHealth -= dmg;
@@ -70,24 +72,19 @@ public class AttackSystem : MonoBehaviour
 
         // Lance la prochaine attaque
         playerMenu.ChangeToGame();
-        attackManager.LaunchNextAttack();
-    }
-
-    public void CancelAttack()
-    {
-        Attack(0);
     }
 
     IEnumerator AnimateDamageBar()
+    // Coroutine pour gerer les animations de la barre de charge
     {
         damageBarAnim.SetTrigger("Fade");
 
         yield return null;
 
-        AnimatorClipInfo current = damageBarAnim.GetCurrentAnimatorClipInfo(0)[0];
+        AnimatorClipInfo current = damageBarAnim.GetCurrentAnimatorClipInfo(0)[0]; // L'animation qui est en train de se jouer
 
         yield return new WaitForSeconds(current.clip.length - Time.deltaTime);
 
-        damageBar.SetActive(false);
+        damageBar.SetActive(false); // Desactive la barre une fois que l'animation est finie
     }
 }

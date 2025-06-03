@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class HUDNavigation : MonoBehaviour
     // Toutes les fonctions pour les boutons FIGHT, ACT, ITEM & MERCY
 {
-    Button currentButton;
-    CanvasGroup HUDGroup;
+    Button currentButton; // Variable qui contient le bouton qui correspond au menu dans lequel on est
+    CanvasGroup HUDGroup; // Groupe contenant les 4 boutons en bas de l'ecran
     
     [SerializeField] GameObject fightMenu;
     Button fightButton;
@@ -22,16 +22,18 @@ public class HUDNavigation : MonoBehaviour
 
     public void Awake()
     {
-        currentButton = transform.GetChild(0).GetComponent<Button>();
-        HUDGroup = GetComponent<CanvasGroup>();
-
+        // Stockage des boutons
         fightButton = transform.GetChild(0).GetComponent<Button>();
         actButton = transform.GetChild(1).GetComponent<Button>();
         itemButton = transform.GetChild(2).GetComponent<Button>();
         mercyButton = transform.GetChild(3).GetComponent<Button>();
+
+        currentButton = fightButton; // Bouton d'attaque selectionne par defaut
+        HUDGroup = GetComponent<CanvasGroup>();
     }
 
     public void Backwards()
+    // Quitte le menu dans lequel on se trouve et retourne sur le 'menu principal' avec les boutons FIGHT, ACT,...
     {
         // Desactive tous les booleens (il y a pas une meilleure maniere de faire ca ?)
         if(isInFight) fightMenu.SetActive(false);
@@ -40,11 +42,12 @@ public class HUDNavigation : MonoBehaviour
         if(isInMercy) mercyMenu.SetActive(false);
 
         HUDGroup.interactable = true;
-        currentButton.Select();
+        currentButton.Select(); // Retourne sur le dernier bouton qu'on a selectionne
     }
 
     public void FIGHT()
     {
+        // Rentre dans le menu et desactive les 4 boutons
         fightMenu.SetActive(true);
         HUDGroup.interactable = false;
 
@@ -59,9 +62,11 @@ public class HUDNavigation : MonoBehaviour
     }
     public void ACT()
     {
+        // Rentre dans le menu et desactive les 4 boutons
         actMenu.SetActive(true);
         HUDGroup.interactable = false;
 
+        // Selectionne le premier bouton
         Button firstButton = actMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
 
@@ -71,9 +76,11 @@ public class HUDNavigation : MonoBehaviour
     }
     public void ITEMS()
     {
+        // Rentre dans le menu et desactive les 4 boutons
         itemMenu.SetActive(true);
         HUDGroup.interactable = false;
 
+        // Selectionne le premier bouton.
         // Vu que les items vont etre desactives une fois consumes, il faut trouver le nouveau premier item a selectionner
         Button firstButton = null; 
         for(int i = 0; i < itemMenu.transform.childCount; i++)
@@ -93,9 +100,11 @@ public class HUDNavigation : MonoBehaviour
     }
     public void MERCY()
     {
+        // Rentre dans le menu et desactive les 4 boutons
         mercyMenu.SetActive(true);
         HUDGroup.interactable = false;
 
+        // Selectionne le premier bouton
         Button firstButton = mercyMenu.transform.GetChild(0).GetComponent<Button>();
         firstButton.Select();
 

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuNavigation : MonoBehaviour
+// Gestion de la navigation entre jeu et menus entre chaque attaque
 {
     HUDNavigation hud;
 
@@ -16,19 +17,15 @@ public class MenuNavigation : MonoBehaviour
     [Header("Menu Navigation")]
     [SerializeField] Button fightButton;
 
-    // Attack Manager
-    AttackManager attackManager;
     public event Action OnChangeToGame;
 
     private void Awake()
     {
         hud = GameObject.Find("HUD").GetComponent<HUDNavigation>();
 
-        playerSprite = this.transform.GetChild(0).gameObject;
-        playerCollision = this.GetComponent<BoxCollider2D>();
+        playerSprite = transform.GetChild(0).gameObject;
+        playerCollision = GetComponent<BoxCollider2D>();
         defaultPlayerPosition = GameObject.Find("Player Default Position").transform;
-
-        attackManager = GameObject.Find("BOSS").GetComponent<AttackManager>();
     }
 
     private void Start()
@@ -37,7 +34,7 @@ public class MenuNavigation : MonoBehaviour
         StartCoroutine(LateStart());
 
         // Ajoute la fonction pour lancer la prochaine attaque dans l'event OnChangeToGame
-        OnChangeToGame += attackManager.LaunchNextAttack;
+        OnChangeToGame += GameObject.Find("BOSS").GetComponent<AttackManager>().LaunchNextAttack;
     }
 
     public void ChangeToMenu()
@@ -45,9 +42,11 @@ public class MenuNavigation : MonoBehaviour
     {
         if(isInGame)
         {
+            // Gestion des action maps
             GameManager.playerInput.FindActionMap("UI").Enable();
             GameManager.playerInput.FindActionMap("Player").Disable();
 
+            // Cache le joueur et retire ses collisions
             playerSprite.SetActive(false);
             playerCollision.enabled = false;
 
@@ -62,11 +61,13 @@ public class MenuNavigation : MonoBehaviour
     {   
         if (!isInGame)
         {
-            hud.Backwards();
+            hud.Backwards(); // Retourne sur le menu principal pour eviter des bugs d'affichage
 
+            // Gestion des action maps
             GameManager.playerInput.FindActionMap("UI").Disable();
             GameManager.playerInput.FindActionMap("Player").Enable();
 
+            // 'Reactive' le joueur
             playerCollision.enabled = true;
             playerSprite.SetActive(true);
             transform.position = defaultPlayerPosition.position;

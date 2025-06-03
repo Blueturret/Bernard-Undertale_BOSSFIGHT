@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
+// Gestion de la vie du joueur
 {
+    // UI
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
 
@@ -16,12 +18,12 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void TakeDamage(float damage)
+    // Fonction pour faire prendre des degats au joueur
     {
         health -= damage;
         if (health <= 0)
         {
-            Debug.Log("You ded");
-            health = maxHealth;
+            Die();
         }
 
         // Change UI
@@ -30,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Heal(float amount)
+    // Fonction pour soigner le joueur
     {
         health += amount;
         health = Mathf.Clamp(health, 1, maxHealth);
@@ -37,5 +40,12 @@ public class PlayerHealth : MonoBehaviour
         // Change UI
         healthBar.fillAmount = health / maxHealth;
         healthText.text = health.ToString() + " / " + maxHealth.ToString();
+    }
+
+    void Die()
+    // Gestion de la mort du joueur
+    {
+        Debug.Log("You ded");
+        health = maxHealth;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 public class FloorIsLavaObstacle : Obstacle
+// Obstacle qui fait des degats continuellement au joueur tant qu'il se trouve dedans (comme le karma dans Undertale)
 {
     PlayerHealth playerHealth;
 
@@ -18,7 +19,7 @@ public class FloorIsLavaObstacle : Obstacle
         canDamage = true;
         rb.linearVelocity = -Vector2.right * speed;
 
-        GetComponent<Animation>().Play();
+        GetComponent<Animation>().Play(); // Animation qui fait sortir l'obstacle du sol au debut de l'attaque
     }
 
     private void Start()
@@ -29,6 +30,7 @@ public class FloorIsLavaObstacle : Obstacle
 
     private void Update()
     {
+        // Teleporte le sprite pour le faire boucler infiniment
         if (transform.position.x <= -11.5f)
         {
             transform.position = startPos;
@@ -52,6 +54,7 @@ public class FloorIsLavaObstacle : Obstacle
     }
 
     IEnumerator DamageCooldown(float cooldown)
+    // Ajoute un cooldown aux degats, parce que 1 degat par frame instakill le joueur
     {
         canDamage = false;
 

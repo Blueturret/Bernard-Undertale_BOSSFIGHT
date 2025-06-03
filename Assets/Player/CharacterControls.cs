@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CharacterControls : MonoBehaviour
+// Mouvements du personnage
 {
     Rigidbody2D rb;
     
@@ -146,6 +147,7 @@ public class CharacterControls : MonoBehaviour
         }
     }
     void TurnBlue()
+    // Change le coeur en coeur bleu
     {
         rb.gravityScale = gravityScale;
         isBlue = true;
@@ -154,6 +156,7 @@ public class CharacterControls : MonoBehaviour
         sprite.color = new Color(0, 0, 255);
     }
     void TurnRed()
+    // Change le coeur en coeur rouge
     {
         rb.gravityScale = 0f;
         isBlue = false;
