@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class ActMenuBehavior : MonoBehaviour
@@ -6,8 +5,6 @@ public class ActMenuBehavior : MonoBehaviour
 {
     MenuNavigation playerMenu;
     HUDNavigation hud;
-
-    BossObject bossInstance = new BossObject();
 
     GameObject flirtButton;
 
@@ -27,8 +24,6 @@ public class ActMenuBehavior : MonoBehaviour
     public void Check()
     // Affiche les stats de Bernard et une phrase personnalisee
     {
-        print(bossInstance.description); // Temporaire en attendant le systeme de dialogues
-        // Lance l'attaque suivante
         playerMenu.ChangeToGame();
     }
 

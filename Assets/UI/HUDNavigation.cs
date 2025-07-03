@@ -4,9 +4,12 @@ using UnityEngine.UI;
 public class HUDNavigation : MonoBehaviour
     // Toutes les fonctions pour les boutons FIGHT, ACT, ITEM & MERCY
 {
+    [SerializeField] TextToDisplay UIText;
+
     Button currentButton; // Variable qui contient le bouton qui correspond au menu dans lequel on est
     CanvasGroup HUDGroup; // Groupe contenant les 4 boutons en bas de l'ecran
-    
+
+    [Header("Menus")]
     [SerializeField] GameObject fightMenu;
     Button fightButton;
     bool isInFight;
@@ -50,6 +53,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         fightMenu.SetActive(true);
         HUDGroup.interactable = false;
+        UIText.Disable();
 
         // Je sais que j'utilise GetComponent de facon recurrente, mais dans ce cas-ci je pense pas que ca cree des soucis de performance
         Button firstButton = fightMenu.transform.GetChild(0).GetComponent<Button>();
@@ -65,6 +69,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         actMenu.SetActive(true);
         HUDGroup.interactable = false;
+        UIText.Disable();
 
         // Selectionne le premier bouton
         Button firstButton = actMenu.transform.GetChild(0).GetComponent<Button>();
@@ -79,6 +84,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         itemMenu.SetActive(true);
         HUDGroup.interactable = false;
+        UIText.Disable();
 
         // Selectionne le premier bouton.
         // Vu que les items vont etre desactives une fois consumes, il faut trouver le nouveau premier item a selectionner
@@ -103,6 +109,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         mercyMenu.SetActive(true);
         HUDGroup.interactable = false;
+        UIText.Disable();
 
         // Selectionne le premier bouton
         Button firstButton = mercyMenu.transform.GetChild(0).GetComponent<Button>();

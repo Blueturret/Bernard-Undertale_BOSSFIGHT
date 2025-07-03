@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -52,7 +51,7 @@ public class MenuNavigation : MonoBehaviour
             playerSprite.SetActive(false);
             playerCollision.enabled = false;
 
-            // Active le texte global
+            // Affiche un texte global
             UIText.DisplayText("Global");
 
             fightButton.Select(); // Selectionne le bouton FIGHT par defaut

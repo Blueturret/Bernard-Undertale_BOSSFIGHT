@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightButton: {fileID: 237309760}
-  UIText: {fileID: 0}
+  UIText: {fileID: 608188086}
 --- !u!114 &244754136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608188081}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* Sample text'
+  m_text: '* Sample Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
   m_sharedMaterial: {fileID: 4361880649397347, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
@@ -3227,7 +3227,19 @@ MonoBehaviour:
   - name: Global
     isRandom: 1
     texts:
-    - '* You hear wood creeking'
+    - '* You hear wood creeking.'
+    - '* Bernard is vibing to\n  his own theme.'
+    - '* Bernard advises\n  subscribing to Blueturret.'
+    - '* Bernard tries to break \n  the fourth wall.\n* It failed?'
+    - '* You''re not in a \n  tree-mendous situation'
+    - '* You feel a bit sappy.'
+    - '* Someone is rooting \n  for you.'
+    - '* Bernard reminds you that \n  he is NOT Groot.'
+    - '* You feel some kind of \n  re-leaf'
+    - '* The battle is getting \n  knotty'
+    - "* You think about \\n  log-ing\_off"
+    - "* You think about \\n  log-ing\_off"
+    - '* Subscribe to FunnyName0_0.'
     index: -1
   - name: Check
     isRandom: 0
@@ -3237,8 +3249,8 @@ MonoBehaviour:
   - name: Talk
     isRandom: 0
     texts:
-    - '* You talk to Bernard.\n* It doesn''t do anything.'
-    - '* You talk to Bernard.\n* Something happened'
+    - '* You talk to Bernard.\n* Something happened.'
+    - '* Bernard wants more than \n  just talking.'
     index: -1
 --- !u!1 &613935969
 GameObject:
@@ -7404,6 +7416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6e7e321be1184d986f1aa79f5f6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIText: {fileID: 608188086}
   fightMenu: {fileID: 796355134}
   actMenu: {fileID: 1419943021}
   itemMenu: {fileID: 148537442}
