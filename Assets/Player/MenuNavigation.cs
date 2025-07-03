@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class MenuNavigation : MonoBehaviour
 
     [Header("Menu Navigation")]
     [SerializeField] Button fightButton;
+    [SerializeField] TextToDisplay UIText;
 
     public event Action OnChangeToGame;
 
@@ -50,6 +52,9 @@ public class MenuNavigation : MonoBehaviour
             playerSprite.SetActive(false);
             playerCollision.enabled = false;
 
+            // Active le texte global
+            UIText.DisplayText("Global");
+
             fightButton.Select(); // Selectionne le bouton FIGHT par defaut
 
             isInGame = false;
@@ -71,6 +76,9 @@ public class MenuNavigation : MonoBehaviour
             playerCollision.enabled = true;
             playerSprite.SetActive(true);
             transform.position = defaultPlayerPosition.position;
+
+            // Desactive le texte global
+            UIText.Disable();
 
             EventSystem.current.SetSelectedGameObject(null); // Deselectionne tous les boutons
 
