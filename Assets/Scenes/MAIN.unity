@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608188081}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* Sample Text'
+  m_text: '* BERNARD - ATK 12 DEF 8\n* Right hand to the mighty \n  Blueturret'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
   m_sharedMaterial: {fileID: 4361880649397347, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
@@ -3244,7 +3244,7 @@ MonoBehaviour:
   - name: Check
     isRandom: 0
     texts:
-    - BERNARD - ATK 12 DEF 8
+    - '* BERNARD - ATK 12 DEF 8\n* Right hand to the mighty \n  Blueturret'
     index: -1
   - name: Talk
     isRandom: 0
