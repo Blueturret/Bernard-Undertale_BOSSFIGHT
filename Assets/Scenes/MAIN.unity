@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608188081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -3251,6 +3251,11 @@ MonoBehaviour:
     texts:
     - '* You talk to Bernard.\n* Something happened.'
     - '* Bernard wants more than \n  just talking.'
+    index: -1
+  - name: Flirt
+    isRandom: 0
+    texts:
+    - '* You kissed Bernard.\n* He seems happy enough.\n* Something happened.'
     index: -1
 --- !u!1 &613935969
 GameObject:
@@ -5915,6 +5920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b3fc46829d5e040b040154c40ac834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIText: {fileID: 608188086}
 --- !u!1 &1420347103
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,16 +6016,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 608188086}
-        m_TargetAssemblyTypeName: TextToDisplay, Assembly-CSharp
-        m_MethodName: DisplayText
-        m_Mode: 5
+      - m_Target: {fileID: 1419943021}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Talk
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1420347106
@@ -6624,16 +6630,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 608188086}
-        m_TargetAssemblyTypeName: TextToDisplay, Assembly-CSharp
-        m_MethodName: DisplayText
-        m_Mode: 5
+      - m_Target: {fileID: 1419943021}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Check
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1588634323

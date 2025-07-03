@@ -3,16 +3,9 @@ using UnityEngine;
 public class ActMenuBehavior : MonoBehaviour
 // Logique du menu ACT
 {
-    MenuNavigation playerMenu;
-    HUDNavigation hud;
+    [SerializeField] TextToDisplay UIText;
 
     GameObject flirtButton;
-
-    private void Awake()
-    {
-        playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
-        hud = GameObject.Find("HUD").GetComponent<HUDNavigation>();
-    }
 
     private void Start()
     {
@@ -24,23 +17,24 @@ public class ActMenuBehavior : MonoBehaviour
     public void Check()
     // Affiche les stats de Bernard et une phrase personnalisee
     {
-        playerMenu.ChangeToGame();
+        UIText.DisplayText("Check");
     }
 
     public void Talk()
     // Parler une fois a Bernard active le bouton pour flirt
     {
-        flirtButton.SetActive(true);
+        UIText.DisplayText("Talk");
 
-        // Lance l'attaque suivante
-        playerMenu.ChangeToGame();
+        flirtButton.SetActive(true);
     }
     public void Flirt()
     // Flirt avec Bernard, ce qui lance la fin pacifiste
     {
         GameObject.Find("Body").GetComponent<Animator>().SetTrigger("mustKawaii"); // Lance l'animation de Bernard qui rougit
 
+        UIText.DisplayText("Flirt", false);
+
         // Retourne dans le menu
-        hud.Backwards();
+        GameObject.Find("HUD").GetComponent<HUDNavigation>().Backwards();
     }
 }

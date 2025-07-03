@@ -45,6 +45,7 @@ public class HUDNavigation : MonoBehaviour
         if(isInMercy) mercyMenu.SetActive(false);
 
         HUDGroup.interactable = true;
+        UIText.Enable();
         currentButton.Select(); // Retourne sur le dernier bouton qu'on a selectionne
     }
 

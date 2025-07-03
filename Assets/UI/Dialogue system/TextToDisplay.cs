@@ -5,6 +5,14 @@ using System.Collections;
 
 public class TextToDisplay : MonoBehaviour
 {
+    MenuNavigation playerMenu;
+    TextMeshProUGUI UIText;
+    private void Awake()
+    {
+        playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
+        UIText = this.gameObject.GetComponent<TextMeshProUGUI>();
+    }
+
     [System.Serializable]
     public class TextBlock
     {
@@ -14,14 +22,6 @@ public class TextToDisplay : MonoBehaviour
 
         [HideInInspector] public int index = -1; // L'index du texte a afficher dans la liste
     }
-
-    #region UIText
-    TextMeshProUGUI UIText;
-    private void Awake()
-    {
-        UIText = this.gameObject.GetComponent<TextMeshProUGUI>();
-    }
-    #endregion
 
     [SerializeField] List<TextBlock> textBlocksList = new List<TextBlock>();
     Dictionary<string, TextBlock> textBlocksDict = new Dictionary<string, TextBlock>();
@@ -36,7 +36,7 @@ public class TextToDisplay : MonoBehaviour
         }
     }
 
-    public void DisplayText(string blockName)
+    public void DisplayText(string blockName, bool hasCooldown=true)
     // Methode pour afficher le prochain texte de la boite de texte qui a comme nom 'blockName'
     {
         if (!textBlocksDict.ContainsKey(blockName))
@@ -59,11 +59,30 @@ public class TextToDisplay : MonoBehaviour
         }
 
         UIText.text = current.texts[current.index];
+
+        if (hasCooldown)
+        {
+            StartCoroutine(DisableTextAfterCooldown(2f));
+        }
+    }
+
+    public void Enable()
+    // Pour ne pas devoir faire une reference a ce script et au TMProUGUI juste pour l'activer/le desactiver
+    {
+        UIText.enabled = true;
     }
 
     public void Disable()
-    // Pour ne pas devoir faire une reference a ce script et au TMProUGUI juste pour le desactiver
+    // Idem
     {
         UIText.enabled = false;
+    }
+
+    IEnumerator DisableTextAfterCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+
+        Disable();
+        playerMenu.ChangeToGame();
     }
 }

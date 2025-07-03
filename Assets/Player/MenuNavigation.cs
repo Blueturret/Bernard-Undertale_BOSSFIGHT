@@ -52,7 +52,7 @@ public class MenuNavigation : MonoBehaviour
             playerCollision.enabled = false;
 
             // Affiche un texte global
-            UIText.DisplayText("Global");
+            UIText.DisplayText("Global", false);
 
             fightButton.Select(); // Selectionne le bouton FIGHT par defaut
 
