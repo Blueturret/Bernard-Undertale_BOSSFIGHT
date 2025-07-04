@@ -7,7 +7,6 @@ public class ItemsMenuBehavior : MonoBehaviour
 {
     MenuNavigation playerMenu;
     PlayerHealth playerHealth;
-    GameObject noFoodText;
 
     List<GameObject> itemList = new List<GameObject>();
     List<Vector2> slotsList = new List<Vector2>();
@@ -16,14 +15,10 @@ public class ItemsMenuBehavior : MonoBehaviour
     {
         playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
-
-        noFoodText = transform.GetChild(transform.childCount - 1).gameObject;
     }
 
     void Start()
-    {
-        noFoodText.SetActive(false);
-        
+    {   
         // Associe a chaque item une position pour la fonction ArrangeInventory()
         for(int i=0; i < transform.childCount - 1; i++)
         {
@@ -35,13 +30,6 @@ public class ItemsMenuBehavior : MonoBehaviour
     public void ConsumeItem(int healAmount)
     // Fonction pour consommer un item et soigner le joueur
     {
-        // Affiche un message si on a plus d'items
-        if (itemList.Count <= 0)
-        {
-            noFoodText.SetActive(true);
-            return;
-        }
-
         playerHealth.Heal(healAmount);
         
         // Desactive l'item qu'on vient de selectionner

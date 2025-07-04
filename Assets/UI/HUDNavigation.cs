@@ -104,9 +104,17 @@ public class HUDNavigation : MonoBehaviour
             }
         }
 
-        if(firstButton != null) firstButton.Select();
+        // Affiche un message s'il n'y a plus de bouton disponible
+        if (firstButton != null)
+        {
+            firstButton.Select();
+        }
+        else
+        {
+            UITextToDisplay.DisplayText("NoMoreFood");
+        }
 
-        currentButton = itemButton;
+            currentButton = itemButton;
 
         isInItems = true;
     }

@@ -51,6 +51,8 @@ public class TextToDisplay : MonoBehaviour
             Debug.LogWarning("Textblock with name '" + blockName + "' not found!");
         }
 
+        Enable();
+
         TextBlock current = textBlocksDict[blockName];
 
         UIText.enabled = true;
