@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HUDNavigation : MonoBehaviour
     // Toutes les fonctions pour les boutons FIGHT, ACT, ITEM & MERCY
 {
-    [SerializeField] TextToDisplay UIText;
+    [SerializeField] TextToDisplay UITextToDisplay;
 
     Button currentButton; // Variable qui contient le bouton qui correspond au menu dans lequel on est
     CanvasGroup HUDGroup; // Groupe contenant les 4 boutons en bas de l'ecran
@@ -38,14 +38,19 @@ public class HUDNavigation : MonoBehaviour
     public void Backwards()
     // Quitte le menu dans lequel on se trouve et retourne sur le 'menu principal' avec les boutons FIGHT, ACT,...
     {
+        if (UITextToDisplay.isEnabled())
+        {
+            return;
+        }
+
         // Desactive tous les booleens (il y a pas une meilleure maniere de faire ca ?)
-        if(isInFight) fightMenu.SetActive(false);
+        if (isInFight) fightMenu.SetActive(false);
         if(isInAct) actMenu.SetActive(false);
         if(isInItems) itemMenu.SetActive(false);
         if(isInMercy) mercyMenu.SetActive(false);
 
         HUDGroup.interactable = true;
-        UIText.Enable();
+        UITextToDisplay.Enable();
         currentButton.Select(); // Retourne sur le dernier bouton qu'on a selectionne
     }
 
@@ -54,7 +59,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         fightMenu.SetActive(true);
         HUDGroup.interactable = false;
-        UIText.Disable();
+        UITextToDisplay.Disable();
 
         // Je sais que j'utilise GetComponent de facon recurrente, mais dans ce cas-ci je pense pas que ca cree des soucis de performance
         Button firstButton = fightMenu.transform.GetChild(0).GetComponent<Button>();
@@ -70,7 +75,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         actMenu.SetActive(true);
         HUDGroup.interactable = false;
-        UIText.Disable();
+        UITextToDisplay.Disable();
 
         // Selectionne le premier bouton
         Button firstButton = actMenu.transform.GetChild(0).GetComponent<Button>();
@@ -85,7 +90,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         itemMenu.SetActive(true);
         HUDGroup.interactable = false;
-        UIText.Disable();
+        UITextToDisplay.Disable();
 
         // Selectionne le premier bouton.
         // Vu que les items vont etre desactives une fois consumes, il faut trouver le nouveau premier item a selectionner
@@ -110,7 +115,7 @@ public class HUDNavigation : MonoBehaviour
         // Rentre dans le menu et desactive les 4 boutons
         mercyMenu.SetActive(true);
         HUDGroup.interactable = false;
-        UIText.Disable();
+        UITextToDisplay.Disable();
 
         // Selectionne le premier bouton
         Button firstButton = mercyMenu.transform.GetChild(0).GetComponent<Button>();

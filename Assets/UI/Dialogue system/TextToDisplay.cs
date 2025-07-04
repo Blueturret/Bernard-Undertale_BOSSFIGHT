@@ -7,10 +7,17 @@ public class TextToDisplay : MonoBehaviour
 {
     MenuNavigation playerMenu;
     TextMeshProUGUI UIText;
+
+    TypeWriterEffect typeWriter;
+
+    bool hasCooldown;
+
     private void Awake()
     {
         playerMenu = GameObject.Find("Player").GetComponent<MenuNavigation>();
         UIText = this.gameObject.GetComponent<TextMeshProUGUI>();
+
+        typeWriter = GetComponent<TypeWriterEffect>();
     }
 
     [System.Serializable]
@@ -36,7 +43,7 @@ public class TextToDisplay : MonoBehaviour
         }
     }
 
-    public void DisplayText(string blockName, bool hasCooldown=true)
+    public void DisplayText(string blockName, bool _hasCooldown=true)
     // Methode pour afficher le prochain texte de la boite de texte qui a comme nom 'blockName'
     {
         if (!textBlocksDict.ContainsKey(blockName))
@@ -47,6 +54,7 @@ public class TextToDisplay : MonoBehaviour
         TextBlock current = textBlocksDict[blockName];
 
         UIText.enabled = true;
+        hasCooldown = _hasCooldown;
 
         if (current.index < current.texts.Count - 1)
         {
@@ -58,12 +66,7 @@ public class TextToDisplay : MonoBehaviour
             current.index = Random.Range(0, current.texts.Count);
         }
 
-        UIText.text = current.texts[current.index];
-
-        if (hasCooldown)
-        {
-            StartCoroutine(DisableTextAfterCooldown(2f));
-        }
+        typeWriter.SetText(current.texts[current.index]);
     }
 
     public void Enable()
@@ -78,8 +81,23 @@ public class TextToDisplay : MonoBehaviour
         UIText.enabled = false;
     }
 
-    IEnumerator DisableTextAfterCooldown(float cooldown)
+    public bool isEnabled()
     {
+        return UIText.enabled;
+    }
+
+    public void DisableTextAfterCooldown()
+    {
+        if (!hasCooldown)
+        {
+            return;
+        }
+
+        StartCoroutine(DisableTextAfterCooldown(2f));
+    }
+
+    IEnumerator DisableTextAfterCooldown(float cooldown)
+    {   
         yield return new WaitForSeconds(cooldown);
 
         Disable();

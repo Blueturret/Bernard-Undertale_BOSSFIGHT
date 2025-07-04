@@ -3086,6 +3086,8 @@ GameObject:
   - component: {fileID: 608188085}
   - component: {fileID: 608188084}
   - component: {fileID: 608188086}
+  - component: {fileID: 608188087}
+  - component: {fileID: 608188088}
   m_Layer: 5
   m_Name: UIText
   m_TagString: Untagged
@@ -3132,7 +3134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* BERNARD - ATK 12 DEF 8\n* Right hand to the mighty \n  Blueturret'
+  m_text: '* Sample Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
   m_sharedMaterial: {fileID: 4361880649397347, guid: 74a1a394eb45073428d4c1c45a008600, type: 2}
@@ -3244,7 +3246,7 @@ MonoBehaviour:
   - name: Check
     isRandom: 0
     texts:
-    - '* BERNARD - ATK 12 DEF 8\n* Right hand to the mighty \n  Blueturret'
+    - '* BERNARD - ATK 12 DEF 8\n* Right hand to the mighty \n  Blueturret.'
     index: -1
   - name: Talk
     isRandom: 0
@@ -3257,6 +3259,51 @@ MonoBehaviour:
     texts:
     - '* You kissed Bernard.\n* He seems happy enough.\n* Something happened.'
     index: -1
+--- !u!114 &608188087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608188081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b0d7829d595a342889fe919d3adfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPerSecond: 20
+  interpunctuationDelay: 0.5
+  sendDoneDelay: 0.25
+--- !u!114 &608188088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608188081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UI
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &613935969
 GameObject:
   m_ObjectHideFlags: 0
@@ -7422,7 +7469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6e7e321be1184d986f1aa79f5f6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIText: {fileID: 608188086}
+  UITextToDisplay: {fileID: 608188086}
   fightMenu: {fileID: 796355134}
   actMenu: {fileID: 1419943021}
   itemMenu: {fileID: 148537442}
