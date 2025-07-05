@@ -4,6 +4,7 @@ public class Platform : MonoBehaviour
 // Gestion des soft platforms
 {
     Rigidbody2D rb;
+    Vector2 initialPos;
 
     [SerializeField] float speed = 1.2f;
 
@@ -12,8 +13,14 @@ public class Platform : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Start()
+    void OnEnable()
     {
         rb.linearVelocity = -Vector2.right * speed;
+        initialPos = transform.position;
+    }
+
+    private void OnDisable()
+    {
+        transform.position = initialPos;
     }
 }

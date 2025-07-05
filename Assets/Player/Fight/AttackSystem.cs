@@ -61,7 +61,6 @@ public class AttackSystem : MonoBehaviour
     {
         // Gestion des degats
         bossHealth -= dmg;
-        if (bossHealth <= 0) Debug.Log("Da boss is ded!!");
 
         // Gestion de l'interface
         float new_amount = bossHealth / boss.maxHealth;
@@ -71,7 +70,21 @@ public class AttackSystem : MonoBehaviour
         damageMarker.SetActive(false);
 
         // Lance la prochaine attaque
-        playerMenu.ChangeToGame();
+        if (bossHealth <= 0)
+        {
+            StartCoroutine(KillBoss());
+        }
+        else
+        {
+            playerMenu.ChangeToGame();
+        }
+    }
+
+    IEnumerator KillBoss()
+    {
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(GameManager.instance.LoadScene(0));
     }
 
     IEnumerator AnimateDamageBar()

@@ -32,10 +32,10 @@ public class AttackManager : MonoBehaviour
         spawnPoint = GameObject.Find("Player Default Position").transform;
 
         //attacks.Add(NullAttack);
-        //attacks.Add(Attack1);
-        //attacks.Add(Attack2);
-        //attacks.Add(Attack3);
-        //attacks.Add(Attack4);
+        attacks.Add(Attack1);
+        attacks.Add(Attack2);
+        attacks.Add(Attack3);
+        attacks.Add(Attack4);
         attacks.Add(Attack5);
     }
 
@@ -139,7 +139,9 @@ public class AttackManager : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(0, -2.5f);
         GameObject floor = ObjectPooler.instance.SpawnFromPool("FloorIsLava", spawnPos, Quaternion.identity);
+
         GameObject movingPlatforms = ObjectPooler.instance.SpawnFromPool("MovingPlatformSequence", Vector3.zero, Quaternion.identity);
+
         attackObjects.Add(floor);
         attackObjects.Add(movingPlatforms);
 
@@ -163,8 +165,15 @@ public class AttackManager : MonoBehaviour
     {
         if (isAttacking) return;
 
-        if (currentIndex != attacks.Count - 1) currentIndex++;
-        attacks[currentIndex].Invoke();
+        if (currentIndex != attacks.Count - 1)
+        {
+            currentIndex++;
+        }
+        else
+        {
+            currentIndex = UnityEngine.Random.Range(0, attacks.Count);
+        }
+            attacks[currentIndex].Invoke();
     }
 
     public void StopCurrentAttack()
@@ -173,8 +182,11 @@ public class AttackManager : MonoBehaviour
         // Desactive tous les objets a la fin d'une attaque
         foreach (GameObject obj in attackObjects.ToArray())
         {
-            obj.SetActive(false);
-            attackObjects.Remove(obj);
+            if (obj != null)
+            {
+                obj.SetActive(false);
+                attackObjects.Remove(obj);
+            }
         }
 
         isAttacking = false;

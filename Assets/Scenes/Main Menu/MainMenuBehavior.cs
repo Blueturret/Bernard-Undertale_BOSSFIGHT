@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuBehavior : MonoBehaviour
 {
     public void StartGame()
     // Lance le combat contre Bernard
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(GameManager.instance.LoadScene(1));
     }
 
     public void Quit()

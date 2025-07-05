@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     // Fonction pour faire prendre des degats au joueur
     {
         health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+
         if (health <= 0)
         {
             Die();
@@ -45,7 +47,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     // Gestion de la mort du joueur
     {
-        Debug.Log("You ded");
-        health = maxHealth;
+        StartCoroutine(GameManager.instance.LoadScene(0));
     }
 }
