@@ -1,9 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 public class ActMenuBehavior : MonoBehaviour
 // Logique du menu ACT
 {
     [SerializeField] TextToDisplay UIText;
+
+    [Header("Pacifist route")]
+    [SerializeField] MercyMenuBehavior mercyBehavior;
+    [SerializeField] TextMeshProUGUI spareText;
 
     GameObject flirtButton;
 
@@ -28,13 +33,15 @@ public class ActMenuBehavior : MonoBehaviour
         flirtButton.SetActive(true);
     }
     public void Flirt()
-    // Flirt avec Bernard, ce qui lance la fin pacifiste
+    // Flirt avec Bernard, ce qui permet de l'epargner pour la fin pacifiste
     {
-        GameObject.Find("Body").GetComponent<Animator>().SetTrigger("mustKawaii"); // Lance l'animation de Bernard qui rougit
-
-        UIText.DisplayText("Flirt", false);
+        // Change la couleur de '* Spare' en jaune
+        spareText.color = new Color(255, 255, 0);
+        mercyBehavior.canSpare = true;
 
         // Retourne dans le menu
         GameObject.Find("HUD").GetComponent<HUDNavigation>().Backwards();
+
+        UIText.DisplayText("Flirt", false);        
     }
 }

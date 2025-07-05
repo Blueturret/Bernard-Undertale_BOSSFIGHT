@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MercyMenuBehavior : MonoBehaviour
@@ -5,7 +6,7 @@ public class MercyMenuBehavior : MonoBehaviour
 {
     MenuNavigation playerMenu;
 
-    bool canSpare = false; // Cette variable passe à 'True' quand on flirt avec embrasse Bernard apres lui avoir parle
+    [HideInInspector] public bool canSpare = false;// Passe à 'True' quand on embrasse Bernard apres lui avoir parle
 
     private void Awake()
     {
@@ -17,12 +18,22 @@ public class MercyMenuBehavior : MonoBehaviour
     {
         if (canSpare)
         {
-            print("Bernard est amoureux hihi");
+            StartCoroutine(Spare());    
         }
         else
         {
             // Lance l'attaque suivante
             playerMenu.ChangeToGame();
         }
+    }
+
+    IEnumerator Spare()
+    {
+        // Lance l'animation de Bernard qui rougit
+        GameObject.Find("Body").GetComponent<Animator>().SetTrigger("mustKawaii");
+
+        yield return new WaitForSeconds(2);
+
+        StartCoroutine(GameManager.instance.LoadScene(0));
     }
 }

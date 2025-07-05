@@ -1541,7 +1541,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.5214, y: 59.3}
-  m_SizeDelta: {x: 189.5804, y: 108.9714}
+  m_SizeDelta: {x: 1275.34, y: 108.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244736600
 MonoBehaviour:
@@ -2768,6 +2768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e20e412d1756244baecd504d4fe33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSpare: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,7 +2950,7 @@ GameObject:
   - component: {fileID: 583747809}
   - component: {fileID: 583747808}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SpareText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3257,6 +3258,7 @@ MonoBehaviour:
     isRandom: 0
     texts:
     - '* You kissed Bernard.\n* He seems happy enough.\n* Something happened.'
+    - '* That''s probably too much.'
     index: -1
   - name: NoMoreFood
     isRandom: 0
@@ -3762,7 +3764,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796355135}
-  - component: {fileID: 796355136}
   m_Layer: 5
   m_Name: Fight Menu
   m_TagString: Untagged
@@ -3790,18 +3791,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &796355136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796355134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6ae4b9de61fe2247a9af6760023a77a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &807314683
 GameObject:
   m_ObjectHideFlags: 0
@@ -5975,6 +5964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIText: {fileID: 608188086}
+  mercyBehavior: {fileID: 515631136}
+  spareText: {fileID: 583747808}
 --- !u!1 &1420347103
 GameObject:
   m_ObjectHideFlags: 0
