@@ -6,6 +6,7 @@ public class AttackSystem : MonoBehaviour
 // Gestion de l'attaque du boss
 {
     MenuNavigation playerMenu;
+    AudioManager audioManager;
 
     BossObject boss = new BossObject();
     HandleHealthbarDisplay healthbarDisplay;
@@ -22,6 +23,7 @@ public class AttackSystem : MonoBehaviour
     private void Awake()
     {
         playerMenu = GetComponent<MenuNavigation>();
+        audioManager = AudioManager.instance;
 
         markerScript = damageMarker.GetComponent<DamageMarker>();
 
@@ -62,6 +64,10 @@ public class AttackSystem : MonoBehaviour
         // Gestion des degats
         bossHealth -= dmg;
 
+        // Audio                                                                                                                                             a
+        audioManager.PlaySound("BossStrike");
+        audioManager.PlaySound("BossDamage");
+
         // Gestion de l'interface
         float new_amount = bossHealth / boss.maxHealth;
 
@@ -82,7 +88,7 @@ public class AttackSystem : MonoBehaviour
 
     IEnumerator KillBoss()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
 
         StartCoroutine(GameManager.instance.LoadScene(0));
     }

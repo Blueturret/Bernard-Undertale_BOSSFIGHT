@@ -171,6 +171,7 @@ public class CharacterControls : MonoBehaviour
         if (context.performed)
         {
             transform.localScale = new Vector3(defaultX * 1.3f, defaultY / 2, transform.localScale.z);
+            AudioManager.instance.PlaySound("PlayerCrouch");
         }
 
         if(context.canceled)

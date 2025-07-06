@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1186278968688283673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3533668247582631934}
+  m_Layer: 0
+  m_Name: AudioSources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3533668247582631934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186278968688283673}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.2931275, y: 0.4649423, z: -1182.5499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4910400048781997413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4203603473049657347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4910400048781997413}
+  - component: {fileID: 9219825454688037027}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4910400048781997413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203603473049657347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.2931275, y: -0.4649423, z: 1182.5499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3533668247582631934}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9219825454688037027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203603473049657347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46047b8953726c74d83b9decc0af6079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 5588ba9b9d0337c4da551aabcbaf294c, type: 3}
+    loop: 1
+    mute: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 8e3603e150bd94c47929624d9718d387, type: 3}
+    loop: 1
+    mute: 0
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: LetterAppear
+    clip: {fileID: 8300000, guid: 0e4044816aef3de4e87a07a9dfaacead, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+  - name: UIMove
+    clip: {fileID: 8300000, guid: 1eae73e3826080b49b00c62fe83ac64d, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: UISelect
+    clip: {fileID: 8300000, guid: 63c92218fc77fef4db2efde7ed6bb61a, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamage
+    clip: {fileID: 8300000, guid: d3defa46dd111e04fba0c39cf794b7fe, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerHeal
+    clip: {fileID: 8300000, guid: 9a1470a3397aeb841bbd9e090797fa0a, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerCrouch
+    clip: {fileID: 8300000, guid: b4ac917664b2c3946ad6469ed7b366f7, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossDamage
+    clip: {fileID: 8300000, guid: d1c3cd72fb2a12940b3f7b103ee7c4c1, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossStrike
+    clip: {fileID: 8300000, guid: 18ab0812825138d4eaacb70176576250, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossSwing
+    clip: {fileID: 8300000, guid: 5011ff7bccd7bda4dbffc2fa8b65fff7, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Telegraphing
+    clip: {fileID: 8300000, guid: f2493f8156a7acf41aaf4e11f8fdac57, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: StickMove
+    clip: {fileID: 8300000, guid: 4485b820b9714f54a82552d000c18cfd, type: 3}
+    loop: 0
+    mute: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}

@@ -19,6 +19,8 @@ public class SwingAnimationController : MonoBehaviour
                 star.GetComponent<SpriteRenderer>().color = new Color32(66, 252, 255, 255);
                 break;
         }
+
+        AudioManager.instance.PlaySound("Telegraphing");
     }
     public void OnSwingAttack()
     {

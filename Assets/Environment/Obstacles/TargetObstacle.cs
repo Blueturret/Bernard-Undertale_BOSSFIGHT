@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 public class TargetObstacle : Obstacle
 {
+    AudioManager audioManager;
+    
     Transform playerPosition;
     Vector2 dir;
 
@@ -9,6 +11,8 @@ public class TargetObstacle : Obstacle
     {
         base.Awake();
         playerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
+        audioManager = AudioManager.instance;
     }
 
     // Mouvement de base de cet obstacle
@@ -27,6 +31,7 @@ public class TargetObstacle : Obstacle
     {
         yield return new WaitForSeconds(seconds);
 
+        audioManager.PlaySound("StickMove");
         rb.linearVelocity = dir.normalized * speed;
     }
 }

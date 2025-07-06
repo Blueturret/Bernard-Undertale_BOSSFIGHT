@@ -52,11 +52,12 @@ public class TextToDisplay : MonoBehaviour
             return;
         }
 
+        // Active le TMProUGUI
         Enable();
 
+        // Stock la boite de texte
         TextBlock current = textBlocksDict[blockName];
 
-        UIText.enabled = true;
         hasCooldown = _hasCooldown;
 
         if (current.index < current.texts.Count - 1)
@@ -81,6 +82,7 @@ public class TextToDisplay : MonoBehaviour
     public void Disable()
     // Idem
     {
+        typeWriter.Skip();
         UIText.enabled = false;
     }
 
@@ -103,7 +105,7 @@ public class TextToDisplay : MonoBehaviour
     {   
         yield return new WaitForSeconds(cooldown);
 
-        Disable();
+        UIText.enabled = false;
         playerMenu.ChangeToGame();
     }
 }

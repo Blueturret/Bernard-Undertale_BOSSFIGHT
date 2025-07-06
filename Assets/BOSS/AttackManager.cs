@@ -176,7 +176,7 @@ public class AttackManager : MonoBehaviour
             attacks[currentIndex].Invoke();
     }
 
-    public void StopCurrentAttack()
+    void StopCurrentAttack()
     // Fonction pour arreter l'/les attaque(s) en cours (faut apprendre a lire l'anglais les mecs/filles/helicopteres/eponges...)
     {
         // Desactive tous les objets a la fin d'une attaque

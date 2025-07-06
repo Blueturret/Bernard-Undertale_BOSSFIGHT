@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
 
             s.source.loop = s.loop;
+            s.source.mute = s.mute;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
         }
@@ -55,7 +56,14 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.Play();
+        if (s.source.loop)
+        {
+            s.source.Play();
+        }
+        else
+        {
+            s.source.PlayOneShot(s.clip);
+        }
     }
 
     public void StopSound(string name)

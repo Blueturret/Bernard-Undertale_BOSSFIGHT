@@ -27,7 +27,6 @@ public class TypeWriterEffect : MonoBehaviour
     [SerializeField][Range(0.1f, 0.5f)] float sendDoneDelay = 0.25f;
 
     public static event Action OnCompleteTextRevealed;
-    public static event Action OnCharacterRevealed;
 
     // UIText
     TextToDisplay UIText;
@@ -72,7 +71,7 @@ public class TypeWriterEffect : MonoBehaviour
         }
     }
 
-    void Skip()
+    public void Skip()
     {
         StopCoroutine(_typeWriterCoroutine);
         _textBox.maxVisibleCharacters = _textBox.textInfo.characterCount;
@@ -110,7 +109,7 @@ public class TypeWriterEffect : MonoBehaviour
                 yield return _simpleDelay;
             }
 
-            OnCharacterRevealed?.Invoke();
+            AudioManager.instance.PlaySound("LetterAppear");
             _currentVisibleCharacterIndex++;
         }
     }

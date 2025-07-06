@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 // Gestion de la vie du joueur
 {
+    AudioManager audioManager;
+
     // UI
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
@@ -14,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        audioManager = AudioManager.instance;
+        
         health = maxHealth;
     }
 
@@ -28,6 +32,9 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
 
+        // Audio
+        audioManager.PlaySound("PlayerDamage");
+
         // Change UI
         healthBar.fillAmount = health / maxHealth;
         healthText.text = health.ToString() + " / " + maxHealth.ToString();
@@ -38,6 +45,9 @@ public class PlayerHealth : MonoBehaviour
     {
         health += amount;
         health = Mathf.Clamp(health, 1, maxHealth);
+
+        // Audio
+        audioManager.PlaySound("PlayerHeal");
 
         // Change UI
         healthBar.fillAmount = health / maxHealth;

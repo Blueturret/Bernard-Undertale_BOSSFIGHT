@@ -20,6 +20,8 @@ public class Swing : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = new Color32(66, 252, 255, 180);
                 break;
         }
+
+        AudioManager.instance.PlaySound("BossSwing");
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)

@@ -33,8 +33,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Enleve le curseur
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+    }
+
+    public void PlayUISound(string name)
+    // Je peux pas utiliser l'AudioManager directement dans l'inspecteur pour assigner les sons
+    // vu qu'il est conserve entre les scenes, donc les boutons le trouvent pas.
+    // Il faut forcement le referencer via script
+    {
+        AudioManager.instance.PlaySound(name);
     }
 
     public IEnumerator LoadScene(int sceneIndex)
