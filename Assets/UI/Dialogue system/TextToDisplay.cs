@@ -49,6 +49,7 @@ public class TextToDisplay : MonoBehaviour
         if (!textBlocksDict.ContainsKey(blockName))
         {
             Debug.LogWarning("Textblock with name '" + blockName + "' not found!");
+            return;
         }
 
         Enable();

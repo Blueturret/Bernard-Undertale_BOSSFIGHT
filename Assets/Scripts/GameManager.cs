@@ -12,15 +12,21 @@ public class GameManager : MonoBehaviour
     // Stocke les inputs du joueur globalement pour pouvoir desactiver/activer des Action Map plus facilement
     public static InputActionAsset playerInput { get; private set; }
 
-    [SerializeField] Animator transitionAnimator;
+    Animator transitionAnimator;
 
     private void Awake()
     {
-        if(!instance)
+        if(instance == null)
         {
             instance = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
+        transitionAnimator = GameObject.Find("Transition Canvas").GetComponent<Animator>();
         playerInput = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
     }
 
