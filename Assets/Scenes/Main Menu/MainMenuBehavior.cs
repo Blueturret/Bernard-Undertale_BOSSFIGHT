@@ -13,8 +13,8 @@ public class MainMenuBehavior : MonoBehaviour
     // Lance le combat contre Bernard
     {
         // Audio
-        AudioManager.instance.StopSound("Menu");
         AudioManager.instance.PlaySound("Theme");
+        AudioManager.instance.StopSound("Menu");
 
         StartCoroutine(GameManager.instance.LoadScene(1));
     }

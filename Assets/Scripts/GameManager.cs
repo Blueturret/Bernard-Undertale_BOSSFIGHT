@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Enleve le curseur
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void PlayUISound(string name)
