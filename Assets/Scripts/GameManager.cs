@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static InputActionAsset playerInput { get; private set; }
 
     Animator transitionAnimator;
+    AudioManager audioManager;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
         transitionAnimator = GameObject.Find("Transition Canvas").GetComponent<Animator>();
         playerInput = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
+        audioManager = AudioManager.instance;
     }
 
     void Start()
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator LoadScene(int sceneIndex)
     {
         transitionAnimator.SetTrigger("Transition");
+        audioManager.PlaySound("Transition", true);
 
         yield return new WaitForSeconds(0.65f);
 

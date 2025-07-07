@@ -131,11 +131,13 @@ public class CharacterControls : MonoBehaviour
         if(playAnim)
         {
             colorFlickerAnim.Play();
+            AudioManager.instance.PlaySound("Telegraphing");
 
             yield return new WaitUntil(() => !colorFlickerAnim.isPlaying);
             yield return new WaitForSeconds(0.3f);
+            AudioManager.instance.PlaySound("Telegraphing");
         }
-        
+
         switch (stateIndex)
         {
             case 0:

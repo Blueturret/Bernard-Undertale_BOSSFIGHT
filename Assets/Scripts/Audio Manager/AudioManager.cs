@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string name)
+    public void PlaySound(string name, bool playOnce=false)
     // Joue le son appele 'name'
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        if (s.source.loop)
+        if (s.source.loop || playOnce)
         {
             s.source.Play();
         }
