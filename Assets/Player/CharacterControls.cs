@@ -100,7 +100,7 @@ public class CharacterControls : MonoBehaviour
 
         if (context.canceled)
         // Au plus on maintient la touche, au plus on saute haut.
-        // Si on arrete prematurement de presser le touche, on diminue la force du saut
+        // Si on arrete prematurement de presser la touche, on diminue la force du saut.
         {
             if(rb.linearVelocity.y > 0)
             {

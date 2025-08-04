@@ -1898,16 +1898,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 608188087}
+        m_TargetAssemblyTypeName: TypeWriterEffect, Assembly-CSharp
+        m_MethodName: Skip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 15cef263-9014-4fd5-94d9-4e4a6234a6ef
     m_ActionName: 'UI/Cancel[/Keyboard/escape]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 32b35790-4ed0-4e9a-aa41-69ac6d629449
-    m_ActionName: 'UI/Point[/Mouse/position,/Pen/position]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
-    m_ActionName: 'UI/Click[/Mouse/leftButton,/Pen/tip]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 244754132}
@@ -1940,6 +1944,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c9105529-f659-4063-ac08-b9d5047a02b2
     m_ActionName: 'Player/Attack[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06021f28-cdb8-4b8e-8c6c-bda8ca410d7a
+    m_ActionName: 'UI/Point[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a5b1c4fa-a699-4dd1-95a9-19c1de8c0159
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 481243ea-8e8a-4b37-879c-773e8791222e
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5d5d5de1-670f-46d2-97f0-d132dddfe893
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e9fdec4-7c4a-4694-8417-89ffa400367c
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 04f6ffb6-5711-4fca-bacc-b2a77fa03d91
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66932cf8-9ecc-4d08-9306-98a003c734fb
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2498,6 +2530,110 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a727e34c23383a4bb77cdeca1707106, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: Transition
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d3defa46dd111e04fba0c39cf794b7fe, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: PlayerDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a1470a3397aeb841bbd9e090797fa0a, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: PlayerHeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b4ac917664b2c3946ad6469ed7b366f7, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: PlayerCrouch
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d1c3cd72fb2a12940b3f7b103ee7c4c1, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: BossDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 18ab0812825138d4eaacb70176576250, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: BossStrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5011ff7bccd7bda4dbffc2fa8b65fff7, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: BossSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f2493f8156a7acf41aaf4e11f8fdac57, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[12].name
+      value: Telegraphing
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4485b820b9714f54a82552d000c18cfd, type: 3}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[13].name
+      value: StickMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[13].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219825454688037027, guid: 8c9cad717d5aec54cab929ac923cc536, type: 3}
+      propertyPath: sounds.Array.data[13].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2538,17 +2674,17 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_PointAction: {fileID: 6940639323855163345, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_MoveAction: {fileID: -8784545083839296357, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_SubmitAction: {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_CancelAction: {fileID: 7727032971491509709, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_DeselectOnBackgroundClick: 0
+  m_LeftClickAction: {fileID: 8184569913706373469, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_MiddleClickAction: {fileID: 5560470032134555613, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_RightClickAction: {fileID: 826926927810224916, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_ScrollWheelAction: {fileID: -8034197017569315957, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -8277593669103213016, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -3675599060585601895, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
@@ -2698,8 +2834,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 62
+  m_fontSizeBase: 62
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3270,7 +3406,6 @@ GameObject:
   - component: {fileID: 608188084}
   - component: {fileID: 608188086}
   - component: {fileID: 608188087}
-  - component: {fileID: 608188088}
   m_Layer: 5
   m_Name: UIText
   m_TagString: Untagged
@@ -3462,36 +3597,6 @@ MonoBehaviour:
   characterPerSecond: 20
   interpunctuationDelay: 0.5
   sendDoneDelay: 0.25
---- !u!114 &608188088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608188081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &613935969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5726,7 +5831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.3, y: -148.79688}
+  m_AnchoredPosition: {x: 20, y: -148.79688}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383304328
@@ -6485,7 +6590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.3, y: -46}
+  m_AnchoredPosition: {x: 20, y: -46}
   m_SizeDelta: {x: 48.4867, y: 48.4867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482299177
@@ -7916,7 +8021,7 @@ MonoBehaviour:
   - tag: Boomerang
     prefab:
     - {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
-    size: 3
+    size: 0
   - tag: FloorIsLava
     prefab:
     - {fileID: 4833538303688685151, guid: 28dd48e4cd356764b8de741f1d155f66, type: 3}

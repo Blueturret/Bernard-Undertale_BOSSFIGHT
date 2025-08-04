@@ -90,7 +90,7 @@ public class MenuNavigation : MonoBehaviour
     IEnumerator LateStart()
     // Si on desactive des ActionMap dans Start ou Awake, ca fonctionne pas, il faut un delai (merci le brozers  Unity)
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.2f);
 
         ChangeToMenu();
     }

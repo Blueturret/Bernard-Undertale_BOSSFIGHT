@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterEffect : MonoBehaviour
@@ -62,20 +63,18 @@ public class TypeWriterEffect : MonoBehaviour
         _typeWriterCoroutine = StartCoroutine(TypeWriter());
     }
 
-    void OnCancel()
+    public void Skip()
     // Fonction pour skip le texte
     {
         if (_textBox.maxVisibleCharacters != _textBox.textInfo.characterCount - 1)
         {
-            Skip();
+            if (_typeWriterCoroutine != null)
+            {
+                StopCoroutine(_typeWriterCoroutine);
+            }
+            _textBox.maxVisibleCharacters = _textBox.textInfo.characterCount;
+            OnCompleteTextRevealed?.Invoke();
         }
-    }
-
-    public void Skip()
-    {
-        StopCoroutine(_typeWriterCoroutine);
-        _textBox.maxVisibleCharacters = _textBox.textInfo.characterCount;
-        OnCompleteTextRevealed?.Invoke();
     }
 
     IEnumerator TypeWriter()
