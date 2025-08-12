@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterEffect : MonoBehaviour

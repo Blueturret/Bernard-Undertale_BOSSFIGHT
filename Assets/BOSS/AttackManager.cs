@@ -173,7 +173,8 @@ public class AttackManager : MonoBehaviour
         {
             currentIndex = UnityEngine.Random.Range(0, attacks.Count);
         }
-            attacks[currentIndex].Invoke();
+
+        attacks[currentIndex].Invoke();
     }
 
     void StopCurrentAttack()

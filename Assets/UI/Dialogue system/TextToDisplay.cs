@@ -31,12 +31,13 @@ public class TextToDisplay : MonoBehaviour
     }
 
     [SerializeField] List<TextBlock> textBlocksList = new List<TextBlock>();
+
+    // J'utilise un dictionnaire ET une liste parce qu'on peut pas afficher de dictionnaire dans l'inspecteur
     Dictionary<string, TextBlock> textBlocksDict = new Dictionary<string, TextBlock>();
 
     private void Start()
     {
-        // Ajoute chaque entree de la liste de bloc de texte au dictionnaire, avec comme cle le nom
-        // parce qu'on peut pas afficher de dictionnaire dans l'inspecteur
+        // Ajoute chaque entree de 'textBlocksList' au dictionnaire, avec comme cle le nom du bloc
         foreach (TextBlock textBlock in textBlocksList)
         {
             textBlocksDict.Add(textBlock.name, textBlock);
@@ -92,6 +93,8 @@ public class TextToDisplay : MonoBehaviour
     }
 
     public void DisableTextAfterCooldown()
+    // Fonction dans l'Event 'OnCompleteTextRevealed' de TypeWriterEffect.cs
+    // On peut pas ajouter de Coroutines donc j'ai fait une fonction qui la lance
     {
         if (!hasCooldown)
         {

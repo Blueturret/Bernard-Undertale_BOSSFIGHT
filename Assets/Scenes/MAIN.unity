@@ -8021,7 +8021,7 @@ MonoBehaviour:
   - tag: Boomerang
     prefab:
     - {fileID: 3795571961084012805, guid: f3f8a53f5e04e564da8e0b2f983b9872, type: 3}
-    size: 0
+    size: 3
   - tag: FloorIsLava
     prefab:
     - {fileID: 4833538303688685151, guid: 28dd48e4cd356764b8de741f1d155f66, type: 3}
